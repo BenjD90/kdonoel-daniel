@@ -5,7 +5,7 @@
 				<img src="header/logo.png" alt="Puntovital" class="logo" height="80">
 			</a>
 		</div>
-		<div *ngIf="!loading" class="collapse navbar-collapse line-height-90-xs">
+		<div class="collapse navbar-collapse line-height-90-xs">
 			<ul class="nav navbar-nav navbar-right" *ngIf="!profile">
 				<li class="border-icon">
 					<a routerLink="/login" class="text-center">
@@ -24,15 +24,7 @@
 						<div class="btn btn-primary round-btn box-shadow">
 							<i class="fa fa-home" aria-hidden="true"></i>
 						</div>
-						<div>Dashboard</div>
-					</a>
-				</li>
-				<li class="border-icon">
-					<a routerLink="/reports" class="text-center">
-						<div class="btn btn-primary round-btn box-shadow">
-							<i class="fa fa-file-text" aria-hidden="true"></i>
-						</div>
-						<div>Reports</div>
+						<div>Accueil</div>
 					</a>
 				</li>
 				<li dropdown triggers="click" class="border-icon">
@@ -41,12 +33,12 @@
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</div>
 						<div class="ellipsis">
-							<span>{{ profile.firstname }}</span>
+							<span>{{ profile.firstName }}</span>
 						</div>
 					</a>
 					<ul *dropdownMenu class="dropdown-menu">
 						<li>
-							<a href="" (click)="logout()">
+							<a class="pointer" (click)="logout()">
 								{{ 'header.links.logout' | translate }}
 							</a>
 						</li>

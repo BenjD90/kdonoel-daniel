@@ -11,29 +11,14 @@ import { StoreService } from '../store/store.service';
 import { SwalService } from '../utils/swal.service';
 import _map = require('lodash/map');
 
-export interface Address {
-	line: string;
-	line2?: string;
-	zipCode: string;
-	city: string;
-}
-
 export interface Profile {
-	auth: string; // TODO: Move this field
-	firstname: string;
-	lastname: string;
+	firstName: string;
+	lastName: string;
 	email: string;
-	address: Address;
 	userId: string;
-	perms: {
-		action: string,
-		user?: string
-	}[];
-	language: string;
 }
 
 export interface Session {
-	type: string;
 	token: string;
 	profile: Profile;
 }
@@ -108,7 +93,7 @@ export class SessionService {
 	}
 
 	login(credentials: Credentials): Observable<any> {
-		return this.http.post("/ecrm/sessions/front", credentials)
+		return this.http.post('/sessions', credentials)
 				.map((res) => res.json())
 				.catch((error) => Observable.throw(error.json()));
 	}
@@ -116,43 +101,6 @@ export class SessionService {
 	logout(): Observable<any> {
 		this.closeSession();
 		return Observable.of({});
-	}
-
-	checlAclAgainstSession(acl): boolean {
-		if (!acl) {
-			this.logger.warn('Missing acl in route data');
-			return false;
-		}
-		if (acl && !this.getSession()) {
-			this.logger.warn('Missing session.');
-			return false;
-		}
-		// console.log('--session--', this.getSession());
-		// console.log('--acl--', acl);
-
-		const userPermsMatchingActions = this.getSession().profile.perms.filter((feature) => {
-			return acl.perms.filter((featureRequired) => {
-						return featureRequired.action === feature.action;
-					}).length > 0;
-		});
-
-		// console.log('--userPermsMatchingActions--', userPermsMatchingActions);
-
-		return userPermsMatchingActions.filter((userPerm) => {
-					return acl.perms
-									.filter((perm) => perm.action === userPerm.action)
-									.filter((perm) => {
-										if (perm.user && userPerm.user === undefined) {
-											// Reject user
-											this.logger.info("Not authorised due to user property");
-											return false;
-										}
-										if (perm.user === null && userPerm.user !== null) {
-											return false;
-										}
-										return true;
-									}).length > 0;
-				}).length > 0;
 	}
 
 	openSession(session: Session) {

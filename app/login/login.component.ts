@@ -61,31 +61,30 @@ export class LoginComponent implements OnInit {
 		this.loading = true;
 		this.errors = [];
 		this.session.login(this.loginForm.getRawValue() as Credentials)
-			.subscribe(
-				(res) => {
-					if (res.session) {
-						this.session.openSession(res.session);
-						(this.session.login$ as Subject<any>).next();
-						return this.router.navigate(['']).then(() => this.loading = false);
-					}
-				}, (err) => {
-					this.loading = false;
+			.subscribe((res) => {
+				if (res.profile) {
+					this.session.openSession(res);
+					(this.session.login$ as Subject<any>).next();
+					return this.router.navigate(['']).then(() => this.loading = false);
+				}
+			}, (err) => {
+				this.loading = false;
 
-					const errorCode = err.code || 'unknown-error';
+				const errorCode = err.code || 'unknown-error';
 
-					if (errorCode === 'change-password-required') {
-						this.loading = true;
-						if (!_get(err, 'error.context.token')) {
-							this.logger.error('token missing in response !', err);
-						}
-						this.router.navigate(['/password/reset'], {queryParams: {token: err.error.context.token}}).then(() => this.loading = false);
+				if (errorCode === 'change-password-required') {
+					this.loading = true;
+					if (!_get(err, 'error.context.token')) {
+						this.logger.error('token missing in response !', err);
 					}
-					this.errors.push(
-						['invalid-credentials', 'account-locked', 'doctors-not-found', 'several-doctors'].includes(errorCode)
-							? 'login.form.errors.' + errorCode
-							: 'commons.errors.unknown-error'
-					);
-				});
+					this.router.navigate(['/password/reset'], {queryParams: {token: err.error.context.token}}).then(() => this.loading = false);
+				}
+				this.errors.push(
+					['invalid-credentials', 'account-locked', 'doctors-not-found', 'several-doctors'].includes(errorCode)
+						? 'login.form.errors.' + errorCode
+						: 'commons.errors.unknown-error'
+				);
+			});
 
 		return false;
 	}

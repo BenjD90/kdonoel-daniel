@@ -31,12 +31,10 @@ export class LostComponent {
 
 		const req: NewPasswordRequest = {
 			email: this.lostForm.value.email,
-			// TODO: Set language from global
-			language: 'fr-FR',
 			signup: true
 		};
 
-		this.password.requestNewPwd(req as NewPasswordRequest)
+		this.password.requestNewPwd(req)
 			.subscribe(
 				() => {
 					SwalService.success('Mail envoyé!', 'Un mail vient de vous être envoyé pour réinitialiser votre mot de passe.', 2000);

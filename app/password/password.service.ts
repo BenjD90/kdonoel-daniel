@@ -5,7 +5,6 @@ import { ApiHttpClient } from '../components/http/api-http-client.service';
 
 export interface NewPasswordRequest {
 	email: string;
-	language: string;
 	signup: boolean;
 }
 

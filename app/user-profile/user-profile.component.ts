@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import { User } from '../components/models/users/users.models';
-import { ResetPasswordRequest, Session, SessionService } from '../components/session/session.service';
-import { SelectItems } from '../components/utils/select-item';
+import { ResetPasswordRequest, SessionService } from '../components/session/session.service';
 
 import { SwalService } from '../components/utils/swal.service';
-
-import { TranslateUtilsService } from '../components/utils/translate-utils.service';
 import { EqualsToValidatorDirective } from '../components/validators/equals-to.validator.directive';
 import { PwdValidatorDirective } from '../components/validators/pwd.validator.directive';
+import { PasswordService } from '../password/password.service';
 import { UsersService } from '../users/users.service';
-import { PasswordService } from './../password/password.service';
 
 import _isEmpty = require('lodash/isEmpty');
 
@@ -26,31 +21,19 @@ export class UserProfileComponent implements OnInit {
 
 	resetForm: FormGroup;
 	user: User;
-	token: string;
 	loading: boolean = false;
-	selectedLanguage: SelectItems;
-	languages: SelectItems;
 
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
-		private route: ActivatedRoute,
 		private passwordService: PasswordService,
 		private sessionService: SessionService,
 		private swal: SwalService,
-		private userServices: UsersService,
-		private translateUtilsService: TranslateUtilsService,
-		private translateService: TranslateService) {
+		private userServices: UsersService) {
 		this.resetForm = fb.group({
 			oldPwd: ['', [Validators.required, PwdValidatorDirective.validPwd]],
 			pwd: ['', [Validators.required, PwdValidatorDirective.validPwd, EqualsToValidatorDirective.equalsTo('confirmedPwd', true)]],
 			confirmedPwd: ['', [Validators.required, EqualsToValidatorDirective.equalsTo('pwd', false)]]
-		});
-
-		this.sessionService.session$.subscribe((newSession) => {
-			if (newSession && newSession.profile && newSession.profile.language) {
-				this.populateList(newSession.profile.language);
-			}
 		});
 	}
 
@@ -59,23 +42,8 @@ export class UserProfileComponent implements OnInit {
 		const userId = this.sessionService.getSession().profile.userId;
 		this.userServices.getUser(userId).subscribe((user) => {
 			this.user = user.user;
-			this.populateList(this.user.language);
 			this.loading = false;
 		});
-	}
-
-	setLanguage() {
-		if (!this.selectedLanguage && !this.selectedLanguage[0]) return;
-		const currentSession = this.sessionService.getSession();
-		currentSession.profile.language = this.selectedLanguage[0].id.replace('locale-', '');
-		this.userServices.setUserLanguage(currentSession.profile.userId, currentSession.profile.language).subscribe(() => {
-			this.swal.translateSuccess('user.personal.info.language.success');
-			this.reloadSession(currentSession);
-		}, (err) => this.swal.translateError('commons.error', `user.personal.info.language.errors.${err}`));
-	}
-
-	onSelectLanguage(selectLang) {
-		this.selectedLanguage = [selectLang];
 	}
 
 	onSubmit() {
@@ -83,8 +51,6 @@ export class UserProfileComponent implements OnInit {
 
 		const reqNew = {
 			email: this.user.email,
-			// TODO: Set language from global
-			language: this.user.language,
 			signup: false
 		};
 
@@ -115,22 +81,5 @@ export class UserProfileComponent implements OnInit {
 			},
 			(errorCode) => SwalService.error('Une erreur s\'est produite!', errorCode)
 		);
-	}
-
-	private generateLanguageList(): Observable<SelectItems> {
-		return this.translateUtilsService.translateSelectItems('header.langselector.', this.translateService.getLangs());
-	}
-
-	private reloadSession(session: Session): void {
-		this.sessionService.openSession(session);
-	}
-
-	private populateList(selectedLanguage: string): void {
-		this.generateLanguageList().subscribe((languages) => {
-			this.languages = languages;
-			this.selectedLanguage = [this.languages.find((lang) => {
-				return lang.id === 'locale-' + selectedLanguage;
-			})];
-		});
 	}
 }

@@ -1,15 +1,7 @@
-
-export interface BasePerson {
-	firstName: string;
-	lastName1?: string;
-	lastName2?: string;
-	birthDate?: Date;
-}
-
-export interface User extends BasePerson {
+export interface User {
 	_id?: string;
 	fullName?: string;
+	lastName?: string;
 	gender?: string;
 	email?: string;
-	language: string;
 }

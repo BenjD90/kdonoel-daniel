@@ -17,7 +17,7 @@ export class LoadingBarComponent implements OnInit {
 	@Input() progress: string = '0';
 	@Input() color: string = '#337ab7';
 	@Input() height: string = '2px';
-	@Input() show: boolean = true;
+	@Input() show: boolean = false;
 
 	constructor(public loadingBarService: LoadingBarService) {
 	}

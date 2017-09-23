@@ -9,35 +9,16 @@
 					<form class="form-horizontal">
 						<div class="form-group">
 							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user.language">{{'user.personal.info.language.label'
-									| translate}}</label>
-								<div class="input-layout col-xs-3">
-									<ng-select [items]="languages" (selected)="onSelectLanguage($event)"
-											   [(ngModel)]="selectedLanguage" placeholder="" class="box-shadow"
-											   [ngModelOptions]="{standalone: true}">
-									</ng-select>
-								</div>
-								<div class="input-layout col-xs-3">
-									<button type="button" class="btn btn-secondary-fill line-height-20-xs"
-											(click)="setLanguage()">
-										{{'user.personal.info.language.button' | translate}}
-									</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user.lastName1">{{'user.personal.info.name'
+								<label class="control-label col-sm-6 text-right">{{'user.personal.info.name'
 									| translate}}</label>
 								<div class="input-layout col-sm-6">
-									<p class="form-control-static">{{user.lastName1 ? user.lastName1 :
-										user.lastName2}}</p>
+									<p class="form-control-static">{{user.lastName }}</p>
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user.firstName">{{'user.personal.info.firstName'
+								<label class="control-label col-sm-6 text-right">{{'user.personal.info.firstName'
 									| translate}}</label>
 								<div class="input-layout col-sm-6">
 									<p class="form-control-static">{{user.firstName}}</p>
@@ -46,7 +27,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user.email">{{'user.personal.info.email'
+								<label class="control-label col-sm-6 text-right">{{'user.personal.info.email'
 									| translate}}</label>
 								<div class="input-layout col-sm-6">
 									<p class="form-control-static">{{user.email}}</p>
@@ -55,7 +36,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user._id">{{'user.personal.info.idNumber'
+								<label class="control-label col-sm-6 text-right">{{'user.personal.info.idNumber'
 									| translate}}</label>
 								<div class="input-layout col-sm-6">
 									<p class="form-control-static">{{user.chorusData.customerCode}}</p>
@@ -64,7 +45,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-xs-12">
-								<label class="control-label col-sm-6 text-right" for="user.type">{{'user.personal.info.titleDoctor'
+								<label class="control-label col-sm-6 text-right">{{'user.personal.info.titleDoctor'
 									| translate}}</label>
 								<div class="input-layout col-sm-6">
 									<p class="form-control-static">{{user.title}}</p>

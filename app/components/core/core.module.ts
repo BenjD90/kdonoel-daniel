@@ -3,12 +3,11 @@ import { ConfigurationModule } from '../conf/configuration.module';
 import { ApiHttpClient } from '../http/api-http-client.service';
 import { LogService } from '../log/log.service';
 import { LoggedInGuard } from '../session/logged-in.guard';
-import { AclGuard } from '../session/acl.guard';
 import { SessionService } from '../session/session.service';
 import { StoreModule } from '../store/store.module';
+import { DateUtilsService } from '../utils/date-utils.service';
 import { SwalService } from '../utils/swal.service';
 import { TranslateUtilsService } from '../utils/translate-utils.service';
-import { DateUtilsService } from '../utils/date-utils.service';
 import { WindowRefService } from '../window/window-ref.service';
 
 /**
@@ -26,7 +25,6 @@ import { WindowRefService } from '../window/window-ref.service';
 		SessionService,
 		ApiHttpClient,
 		LoggedInGuard,
-		AclGuard,
 		SwalService,
 		TranslateUtilsService,
 		DateUtilsService

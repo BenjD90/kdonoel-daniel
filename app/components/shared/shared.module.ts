@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { DisclaimerComponent } from '../angular-components/disclaimers/disclaimer.component';
 import { LoadingComponent } from '../angular-components/loading/loading.component';
-import { AclDirective } from '../directives/acl.directive';
 import { HeightEqualizerDirective } from '../directives/height-equalizer.directive';
 import { ShowErrorsDirective } from '../directives/show-errors.directive';
 import { EmailValidatorDirective } from '../validators/email.validator.directive';
@@ -20,7 +19,6 @@ import { EmailValidatorDirective } from '../validators/email.validator.directive
 		CommonModule
 	],
 	declarations: [
-		AclDirective,
 		ShowErrorsDirective,
 		HeightEqualizerDirective,
 		EmailValidatorDirective,
@@ -28,7 +26,6 @@ import { EmailValidatorDirective } from '../validators/email.validator.directive
 		LoadingComponent,
 	],
 	exports: [
-		AclDirective,
 		ShowErrorsDirective,
 		HeightEqualizerDirective,
 		ReactiveFormsModule,

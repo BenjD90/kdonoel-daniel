@@ -2,7 +2,7 @@ module.exports = {
 	webpackDevServer: {
 		proxy: {
 			'/api': {
-				target: 'http://localhost:6690',
+				target: 'http://localhost:6686',
 				pathRewrite: {'^/api': ''}
 			}
 		},

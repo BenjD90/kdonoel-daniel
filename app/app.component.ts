@@ -30,9 +30,6 @@ export class AppComponent {
 		// api client configuration
 		this.http.baseUrl = this.conf.getAsString('api');
 
-		this.sessionService.session$.subscribe((session) => {
-			if (session && session.profile && session.profile.language) this.translateService.use('locale-' + session.profile.language);
-		});
 		// this.session.session$.subscribe(p => console.log('new session value', p));
 		// this.session.login$.subscribe(p => console.log("logged in"));
 		// this.session.logout$.subscribe(p => console.log("logged out"));
