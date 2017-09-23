@@ -1,0 +1,18 @@
+@import "../../scss/bootstrap/variables";
+@import "../../scss/variables";
+
+:host {
+	display: block;
+}
+
+.input-group-btn {
+	width: 30px;
+
+	.al-btn-info {
+		padding: 7px 10px;
+		background-color: $white;
+		color: $brand-primary;
+	}
+
+}
+

@@ -1,0 +1,17 @@
+<span class="switch"
+	  [class.checked]="checked"
+	  [class.disabled]="disabled"
+	  [class.switch-large]="size === 'large'"
+	  [class.switch-medium]="size === 'medium'"
+	  [class.switch-small]="size === 'small'"
+	  [style.background-color]="getColor()"
+>
+	<span class="on" *ngIf="checked">
+		{{ 'commons.yes' | translate }}
+	</span>
+	<span class="off" *ngIf="!checked">
+		{{ 'commons.no' | translate }}
+	</span>
+	<small [style.background]="getColor('switchColor')">
+	</small>
+</span>

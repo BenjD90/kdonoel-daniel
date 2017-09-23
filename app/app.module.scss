@@ -1,0 +1,51 @@
+// Mixins
+@import '~mixgen/assets/sass/variables';
+@import '~mixgen/assets/sass/borders';
+@import '~mixgen/assets/sass/colors';
+@import '~mixgen/assets/sass/margins';
+@import '~mixgen/assets/sass/paddings';
+@import '~mixgen/assets/sass/text-align';
+@import '~mixgen/assets/sass/texts';
+@import '~mixgen/assets/sass/lineheights';
+@import '~mixgen/assets/sass/verticals';
+
+// Font Awesome
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
+//SweetAlert2
+@import '~sweetalert2/src/sweetalert2.scss';
+@import 'components/scss/swal';
+
+@import '~swiper/dist/css/swiper.min.css';
+
+// Bootstrap variables
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/variables';
+// Override Bootstrap variables
+@import 'components/scss/bootstrap/variables';
+//Variables
+@import 'components/scss/variables';
+// Bootstrap
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// Override Bootstrap
+@import 'components/scss/bootstrap/bootstrap';
+
+// Override ng2-select
+@import 'components/scss/ng-select/ng-select';
+
+// Override datepicker calendar
+@import 'components/scss/calendar';
+
+//Components
+@import 'components/scss/colors';
+@import 'components/scss/borders';
+@import 'components/scss/margins';
+@import 'components/scss/misc';
+@import 'components/scss/paddings';
+@import 'components/scss/forms';
+@import 'components/scss/panels';
+@import 'components/scss/loading';
+@import 'components/scss/texts';
+@import 'components/scss/buttons';
+@import 'components/scss/icons';

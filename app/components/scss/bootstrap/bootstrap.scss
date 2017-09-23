@@ -1,0 +1,162 @@
+/*
+* generates col-[screen-size]-offset-right-[n] which acts like col-[screen-size]-offset-[n] but on the right instead of left
+*/
+@mixin make-grid-offset-right($class) {
+	@for $index from 0 through $grid-columns {
+		.col-#{$class}-offset-right-#{$index} {
+			margin-right: percentage(($index / $grid-columns));
+		}
+	}
+}
+
+@include make-grid-offset-right(xs);
+
+@media (min-width: $screen-sm-min) {
+	@include make-grid-offset-right(sm);
+}
+
+@media (min-width: $screen-md-min) {
+	@include make-grid-offset-right(md);
+}
+
+@media (min-width: $screen-lg-min) {
+	@include make-grid-offset-right(lg);
+}
+
+.navbar {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-color: #fff;
+	border-radius: 0;
+	margin-bottom: 0;
+	height: 90px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	padding: 0;
+}
+
+.visible-mobile {
+	display: none !important;
+}
+
+@media screen and (max-width: $screen-sm-max) {
+	.visible-mobile {
+		display: block !important;
+	}
+
+	.hidden-mobile {
+		display: none !important;
+	}
+}
+
+.form-group-lg {
+	margin-bottom: 20px;
+
+	.form-control {
+		font-size: $font-size-base;
+
+	}
+
+	.input-group-btn .form-control.icon {
+		font-size: 30px;
+		line-height: 1.33;
+	}
+
+	.input-group-addon:last-child {
+		border-radius: 0 $input-border-radius-large $input-border-radius-large 0;
+	}
+}
+
+/*********************************/
+/*********** BUTTONS *************/
+/*********************************/
+
+.btn {
+	&,
+	&:active,
+	&.active {
+		@include box-shadow(none);
+
+		&:focus,
+		&.focus {
+			outline: none;
+		}
+	}
+}
+
+.btn-primary-o {
+	@include button-variant($black, $white, $input-border-color-base);
+
+	&:active,
+	&.active,
+	.open > &.dropdown-toggle {
+		color: $white;
+		background-color: $brand-primary;
+		border-color: darken($input-border-color-base, 12%);
+
+		&:hover,
+		&:focus,
+		&.focus {
+			color: $white;
+			background-color: $brand-primary;
+			border-color: darken($input-border-color-base, 25%);
+		}
+	}
+}
+
+.btn-secondary {
+	@include button-variant($brand-secondary, $white, $brand-secondary);
+	border-radius: $btn-border-radius-large;
+}
+
+.btn-secondary-fill {
+	@include button-variant($white, $brand-secondary, $brand-secondary);
+	border-radius: $btn-border-radius-large;
+}
+
+.btn-lg .btn-large-radius-sides {
+	border-radius: 23px;
+}
+
+.box-shadow {
+	box-shadow: 0 0 20px 0 rgba(255, 255, 255, 1);
+}
+
+.panel-white {
+	@include panel-variant($white, $brand-primary-text, $white, $white);
+
+	.panel-heading {
+		color: $brand-primary-text;
+		text-transform: capitalize;
+		font-weight: bold;
+		font-size: 20px;
+	}
+}
+
+.panel-white.no-radius-bottom {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.panel-white.no-radius-top {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.modal-title {
+	color: $brand-primary-text;
+}
+
+.dropdown-menu {
+	border-radius: $input-border-radius-large;
+
+	> .active {
+		> a {
+			&, &:hover, &:focus {
+				background-color: $brand-primary;
+			}
+		}
+	}
+}

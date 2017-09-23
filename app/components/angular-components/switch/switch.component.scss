@@ -1,0 +1,94 @@
+@import "../../scss/variables";
+
+.switch {
+	border: 1px solid $input-border-color-base;
+	position: relative;
+	display: inline-block;
+	box-sizing: content-box;
+	overflow: visible;
+	padding: 0;
+	margin: 0;
+	top: 3px;
+	cursor: pointer;
+	box-shadow: rgb(223, 223, 223) 0 0 0 0 inset;
+	transition: 0.3s ease-out all;
+
+	span {
+		position: absolute;
+		top: 11px;
+
+		&.on {
+			color: $white;
+			left: 15px;
+		}
+
+		&.off {
+			left: 56px;
+			color: $brand-primary-text;
+		}
+	}
+
+	small {
+		border-radius: 10px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: 0.3s ease-out all;
+		-webkit-transition: 0.3s ease-out all;
+	}
+
+	&.switch-large {
+		width: 100px;
+		height: 40px;
+		border-radius: 10px;
+
+		small {
+			width: 45px;
+			height: 40px;
+		}
+	}
+	&.switch-medium {
+		width: 50px;
+		height: 30px;
+		border-radius: 10px;
+
+		small {
+			width: 30px;
+			height: 30px;
+		}
+	}
+	.switch-small {
+		width: 33px;
+		height: 20px;
+		border-radius: 10px;
+
+		small {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	&.checked {
+		background: $brand-primary;
+	}
+
+	&.switch-large.checked small {
+		left: 56px;
+	}
+
+	&.switch-medium.checked small {
+		left: 20px;
+	}
+
+	&.switch-small.checked small {
+		left: 13px;
+	}
+
+	&.disabled {
+		opacity: .50;
+		cursor: not-allowed;
+	}
+}
+
+

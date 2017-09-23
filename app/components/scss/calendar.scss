@@ -1,0 +1,14 @@
+@import "variables";
+
+popover-container .popover-content datepicker {
+	.well {
+		background-color: $blue2;
+		border: none;
+		margin: 0;
+	}
+
+	.btn-secondary {
+		border: none;
+		@include button-variant($brand-primary-text, $blue2, $blue2);
+	}
+}

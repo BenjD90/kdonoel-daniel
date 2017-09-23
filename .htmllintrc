@@ -1,0 +1,18 @@
+{
+	"attr-bans": ["align", "background", "bgcolor", "border", "frameborder", "longdesc", "marginwidth", "marginheight", "scrolling", "style"],
+	"attr-name-style": false,
+	"attr-no-dup": true,
+	"attr-no-unsafe-char": false,
+	"attr-quote-style": "double",
+	"attr-req-value": false,
+	"class-no-dup": true,
+	"id-class-style": false,
+	"img-req-alt": true,
+	"indent-style": "tabs",
+	"indent-width": 2,
+	"label-req-for": false,
+	"line-max-len": 200,
+	"spec-char-escape": false,
+	"tag-bans": ["style", "script"],
+	"tag-close": true
+}

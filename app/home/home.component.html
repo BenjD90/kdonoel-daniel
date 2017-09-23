@@ -1,0 +1,24 @@
+<div *ngIf="!profile" class="container text-center">
+	<div class="panel panel-white">
+		<img width="462" height="208" src="header/logo.png" alt="Home"/>
+		<h1 class="margin-bottom-md-xs text-46-xs text-bold">
+			{{ 'home.title' | translate }}
+		</h1>
+	</div>
+</div>
+
+<div *ngIf="profile" class="container text-left">
+	<!--
+	<div class="row">
+		<div class="col-md-5">
+			<al-reports></al-reports>
+		</div>
+		<div class="col-md-5">
+			<al-news></al-news>
+		</div>
+		<div class="col-md-5">
+			<n9-testblock></n9-testblock>
+		</div>
+	</div>
+	-->
+</div>

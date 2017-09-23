@@ -1,0 +1,41 @@
+@import '~font-awesome/scss/_variables.scss';
+@import "../../scss/variables";
+
+
+:host {
+	display: block;
+	line-height: $line-height-base;
+}
+
+.disclaimer-container {
+
+	i {
+		margin-right: 5px;
+	}
+
+	&.info {
+		color: $blue1;
+		i {
+			display: none;
+		}
+	}
+
+	&.warning {
+		color: $yellow2;
+		i {
+			&:before {
+				content: $fa-var-warning;
+			}
+		}
+	}
+
+	&.blocker {
+		color: $red2;
+		i {
+			&:before {
+				content: $fa-var-exclamation-circle;
+			}
+		}
+	}
+}
+

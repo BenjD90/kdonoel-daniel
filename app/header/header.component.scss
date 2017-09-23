@@ -1,0 +1,55 @@
+@import '../components/scss/variables.scss';
+
+:host /deep/ {
+	ng-select > div {
+		margin-top: 23px;;
+	}
+
+	.navbar-default .navbar-nav {
+		> li > a {
+			padding-top: 10px;
+			height: 90px;
+			color: $brand-primary;
+		}
+
+		.border-icon {
+			width: 70px;
+
+			.round-btn {
+				height: 50px;
+				width: 50px;
+				border-radius: 25px;
+				padding-left: 6px;
+
+				.fa-sign-in {
+					font-size: 2.8em;
+				}
+
+				.fa-home {
+					font-size: 2.8em;
+				}
+
+				.fa-file-text {
+					margin-left: 7px;
+					font-size: 2em;
+					margin-top: 3px;
+				}
+
+				.fa-user {
+					margin-left: 3px;
+					font-size: 2.2em;
+				}
+
+			}
+		}
+	}
+
+	.navbar-default .navbar-nav > .border-icon > a:hover,
+	.navbar-default .navbar-nav > .border-icon > a:focus {
+		color: $brand-primary-text;
+	}
+
+	.logo {
+		margin-top: 4px;
+	}
+}
