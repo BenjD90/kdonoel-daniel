@@ -1,0 +1,26 @@
+<div class="container">
+	<div *ngIf="!loading;else loadingTemplate">
+		<h1>{{ 'user.listKdos' | translate:{ name: user.firstName } }}</h1>
+		<button class="btn btn-primary" (click)="addKdo()">
+			<i class="fa fa-plus"></i>
+			Add
+		</button>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>{{ 'user.kdos.title' | translate}}</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr *ngFor="let kdo of user.kdos">
+					<td>{{ kdo.title }}</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<ng-template #loadingTemplate>
+		<al-loading></al-loading>
+	</ng-template>
+</div>

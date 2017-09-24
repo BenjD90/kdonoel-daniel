@@ -44,7 +44,7 @@ export class SessionService {
 	// tslint:disable:member-ordering
 	private _session$: BehaviorSubject<Session> = new BehaviorSubject(null);
 	public get session$(): Observable<Session> {
-		return this._session$;
+		return this._session$ as Observable<Session>;
 	}
 
 	public islogged$: Observable<boolean> = this.session$.map((p) => !!p);
@@ -59,7 +59,6 @@ export class SessionService {
 			private store: StoreService,
 			private http: ApiHttpClient,
 			private logService: LogService,
-			private translateService: TranslateService,
 			private router: Router,
 			private swal: SwalService) {
 		this.logger = logService.create('[SessionService]');
@@ -106,7 +105,7 @@ export class SessionService {
 	openSession(session: Session) {
 		this.store.set(this.sessionKey, session);
 		this.http.deleteDefaultHeader(ApiHttpClient.AUTHORIZATION_HEADER);
-		this.http.addDefaultHeader(ApiHttpClient.AUTHORIZATION_HEADER, `Bearer ${session.token}`);
+		this.http.addDefaultHeader(ApiHttpClient.AUTHORIZATION_HEADER, ` ${session.token}`);
 		this._session$.next(session);
 	}
 

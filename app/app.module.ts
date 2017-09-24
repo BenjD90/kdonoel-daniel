@@ -33,6 +33,11 @@ const routes: Routes = [
 		path: 'profile',
 		loadChildren: './user-profile/user-profile.module#UserProfileModule',
 		canActivate: [LoggedInGuard]
+	},
+	{
+		path: 'users',
+		loadChildren: './users/users.module#UsersModule',
+		canActivate: [LoggedInGuard]
 	}
 ];
 
@@ -108,7 +113,6 @@ class SourceMapDevErrorHandler extends ErrorHandler {
 		SharedModule.forRoot(),
 		SelectModule,
 		BsDropdownModule.forRoot(),
-		ModalModule.forRoot(),
 		LoadingBarModule
 	],
 	declarations: [

@@ -26,14 +26,14 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private router: Router,
-		private session: SessionService,
+		private sessionService: SessionService,
 		private logService: LogService,
 		private swal: SwalService) {
 		this.logger = this.logService.create('[LoginComponent]');
 	}
 
 	ngOnInit(): void {
-		if (this.session.getSession()) {
+		if (this.sessionService.getSession()) {
 			this.router.navigate(['/']);
 		}
 
@@ -60,11 +60,11 @@ export class LoginComponent implements OnInit {
 		// todo: maybe unsubscribe
 		this.loading = true;
 		this.errors = [];
-		this.session.login(this.loginForm.getRawValue() as Credentials)
+		this.sessionService.login(this.loginForm.getRawValue() as Credentials)
 			.subscribe((res) => {
 				if (res.profile) {
-					this.session.openSession(res);
-					(this.session.login$ as Subject<any>).next();
+					this.sessionService.openSession(res);
+					(this.sessionService.login$ as Subject<any>).next();
 					return this.router.navigate(['']).then(() => this.loading = false);
 				}
 			}, (err) => {

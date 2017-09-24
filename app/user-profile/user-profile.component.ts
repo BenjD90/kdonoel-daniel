@@ -41,7 +41,7 @@ export class UserProfileComponent implements OnInit {
 		this.loading = true;
 		const userId = this.sessionService.getSession().profile.userId;
 		this.userServices.getUser(userId).subscribe((user) => {
-			this.user = user.user;
+			this.user = user;
 			this.loading = false;
 		});
 	}

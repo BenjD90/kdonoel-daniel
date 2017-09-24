@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ApiHttpClient } from '../components/http/api-http-client.service';
-import { UserResult } from './users.models';
+import { User } from '../components/models/users/users.models';
 
 @Injectable()
 export class UsersService {
@@ -11,14 +11,14 @@ export class UsersService {
 		private http: ApiHttpClient) {
 	}
 
-	getUser(userId: string): Observable<UserResult> {
-		return this.http.get(`/ecrm/users/front/${userId}`)
+	getUser(userId: string): Observable<User> {
+		return this.http.get(`/users/${userId}`)
 			.map((res) => res.json())
 			.catch((error) => Observable.throw(error.json().code || 'unknown-error'));
 	}
 
-	setUserLanguage(userId: string, language: string): Observable<void> {
-		return this.http.put(`/ecrm/users/front/${userId}/language`, {language})
+	getUsers(): Observable<User[]> {
+		return this.http.get(`/users`)
 			.map((res) => res.json())
 			.catch((error) => Observable.throw(error.json().code || 'unknown-error'));
 	}

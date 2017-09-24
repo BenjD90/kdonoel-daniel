@@ -8,17 +8,10 @@
 </div>
 
 <div *ngIf="profile" class="container text-left">
-	<!--
-	<div class="row">
-		<div class="col-md-5">
-			<al-reports></al-reports>
-		</div>
-		<div class="col-md-5">
-			<al-news></al-news>
-		</div>
-		<div class="col-md-5">
-			<n9-testblock></n9-testblock>
-		</div>
-	</div>
-	-->
+{{ 'home.listUsers' | translate }}
+	<ul>
+		<li *ngFor="let user of usersObservable | async">
+			<a [routerLink]="['/users', user._id]">{{ user.firstName }}</a>
+		</li>
+	</ul>
 </div>
