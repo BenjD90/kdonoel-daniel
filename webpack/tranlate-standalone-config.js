@@ -45,11 +45,6 @@ module.exports = function () {
 				"dynamic-i18n": {
 					conf: config.dynamicI18n.locale
 				}
-			}),
-			new TranslatePlugin({
-				"dynamic-i18n": {
-					conf: config.dynamicI18n.dictionary
-				}
 			})
 		],
 		resolve: {

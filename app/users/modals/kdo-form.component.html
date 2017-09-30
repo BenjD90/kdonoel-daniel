@@ -1,6 +1,23 @@
 <div class="modal-header">
-	<h4 class="modal-title pull-left">{{ 'kdo.add' | translate}}</h4>
+	<h4 class="modal-title pull-left">{{ 'kdo.add.title' | translate}}</h4>
 </div>
 <div class="modal-body">
-	FORM
+	<!--<pre>{{ form.value | json }}</pre>-->
+	<form [formGroup]="form" (submit)="onSubmit()">
+		<div class="form-group">
+			<label for="title">{{ 'kdo.form.title' | translate}}</label>
+			<input type="text" class="form-control" id="title"
+						 [placeholder]="'kdo.form.title' | translate"
+						 formControlName="title" />
+		</div>
+		<div class="form-group">
+			<label for="description">{{ 'kdo.form.description' | translate}}</label>
+			<textarea class="form-control" id="description" rows="5"
+						 [placeholder]="'kdo.form.description' | translate"
+								formControlName="description"></textarea>
+		</div>
+		<button type="submit" class="btn btn-default">
+			{{ 'kdo.form.submit' | translate}}
+		</button>
+	</form>
 </div>

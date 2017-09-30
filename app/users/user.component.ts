@@ -29,6 +29,9 @@ export class UserComponent implements OnInit {
 	}
 
 	addKdo(): void {
-		this.modalService.show(KdoFormComponent);
+		const modal = this.modalService.show(KdoFormComponent);
+		modal.content.onChange.subscribe((newUser: User) => {
+			this.user = newUser;
+		});
 	}
 }
