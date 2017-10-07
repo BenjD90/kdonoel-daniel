@@ -10,11 +10,17 @@
 				<thead>
 				<tr>
 					<th>{{ 'user.kdos.title' | translate}}</th>
+					<th width="100px"></th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr *ngFor="let kdo of user.kdos">
+				<tr *ngFor="let kdo of user.kdos; let index = index;">
 					<td>{{ kdo.title }}</td>
+					<td>
+						<button class="btn btn-primary" (click)="edit(kdo, index)">
+							{{ 'user.kdos.edit' | translate}}
+						</button>
+					</td>
 				</tr>
 				</tbody>
 			</table>

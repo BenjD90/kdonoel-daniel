@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap';
+import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
-import { UsersService } from './users.service';
 import { KdoFormComponent } from './modals/kdo-form.component';
+import { UsersService } from './users.service';
 
 @Component({
 	selector: 'al-user',
@@ -30,6 +31,15 @@ export class UserComponent implements OnInit {
 
 	addKdo(): void {
 		const modal = this.modalService.show(KdoFormComponent);
+		modal.content.onShow();
+		modal.content.onChange.subscribe((newUser: User) => {
+			this.user = newUser;
+		});
+	}
+
+	edit(kdo: Kdo, index: number): void {
+		const modal = this.modalService.show(KdoFormComponent);
+		modal.content.onShow(kdo, index);
 		modal.content.onChange.subscribe((newUser: User) => {
 			this.user = newUser;
 		});
