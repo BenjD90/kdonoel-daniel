@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap';
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
 	loading: boolean = true;
 
 	constructor(
+		private router: Router,
 		private route: ActivatedRoute,
 		private usersService: UsersService,
 		private modalService: BsModalService) {
@@ -42,6 +43,12 @@ export class UserComponent implements OnInit {
 		modal.content.onShow(kdo, index);
 		modal.content.onChange.subscribe((newUser: User) => {
 			this.user = newUser;
+		});
+	}
+
+	showKdo(index: number): void {
+		this.router.navigate([index], {
+			relativeTo: this.route
 		});
 	}
 }

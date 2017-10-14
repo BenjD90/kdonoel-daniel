@@ -96,14 +96,14 @@ module.exports = function (env, conf) {
 			]
 		},
 		output: {
-			filename: '[name].bundle.js',
-			chunkFilename: '[name].bundle.[hash].js',
+			filename: '[name].bundle.[hash].js',
+			chunkFilename: '[name].bundle.[chunkhash].js',
 			path: path.resolve(rootDir, dist),
 			publicPath: !!conf.env.baseUrl ? conf.env.baseUrl : undefined
 		},
 		plugins: [
 			new CommonsChunkPlugin({
-				filename: 'vendor.bundle.js',
+				filename: 'vendor.bundle.[hash].js',
 				minChunks: Infinity,
 				name: 'vendor'
 			}),

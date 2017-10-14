@@ -1,13 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../components/shared/shared.module';
-import { UserComponent } from './user.component';
-import { KdoFormComponent } from './modals/kdo-form.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { Nl2brPipe } from '../components/pipes/nl2br.pipe';
+import { SharedModule } from '../components/shared/shared.module';
+import { KdoComponent } from './kdo/kdo.component';
+import { KdoFormComponent } from './modals/kdo-form.component';
+import { UserComponent } from './user.component';
 
 const routes: Routes = [
-	{path: ':userId', component: UserComponent}
+	{
+		path: ':userId',
+		component: UserComponent
+	},
+	{
+		path: ':userId/:kdoIndex',
+		component: KdoComponent
+	}
 ];
 
 @NgModule({
@@ -19,7 +28,9 @@ const routes: Routes = [
 	],
 	providers: [],
 	declarations: [
+		Nl2brPipe,
 		UserComponent,
+		KdoComponent,
 		KdoFormComponent
 	],
 	entryComponents: [

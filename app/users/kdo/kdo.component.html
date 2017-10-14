@@ -1,0 +1,14 @@
+<div class="container">
+	<div *ngIf="!loading;else loadingTemplate">
+		<a routerLink="../">
+			<i class="fa fa-arrow-left"></i>
+			{{ 'kdo.backToList' | translate }}
+		</a>
+		<h1>{{kdo.title}}</h1>
+		<p [innerHTML]="kdo.description | alNl2br">
+		</p>
+	</div>
+	<ng-template #loadingTemplate>
+		<al-loading></al-loading>
+	</ng-template>
+</div>

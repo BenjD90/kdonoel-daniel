@@ -8,7 +8,6 @@ import { SwalService } from '../components/utils/swal.service';
 import { EmailValidatorDirective } from '../components/validators/email.validator.directive';
 import { PwdValidatorDirective } from '../components/validators/pwd.validator.directive';
 import _get = require('lodash/get');
-import _isEmpty = require('lodash/isEmpty');
 
 @Component({
 	selector: 'n9-login',
@@ -57,7 +56,7 @@ export class LoginComponent implements OnInit {
 		$event.stopPropagation();
 		if (!this.loginForm.valid) return;
 		if (!this.loginForm.valid) return;
-		// todo: maybe unsubscribe
+
 		this.loading = true;
 		this.errors = [];
 		this.sessionService.login(this.loginForm.getRawValue() as Credentials)
