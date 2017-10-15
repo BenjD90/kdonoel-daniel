@@ -1,32 +1,43 @@
 <div class="container">
 	<div *ngIf="!loading;else loadingTemplate">
-		<h1>{{ 'user.listKdos' | translate:{ name: user.firstName } }}</h1>
-		<button class="btn btn-primary" (click)="addKdo()">
-			<i class="fa fa-plus"></i>
-			Add
-		</button>
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-				<tr>
-					<th>{{ 'user.kdos.title' | translate}}</th>
-					<th width="100px"></th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr *ngFor="let kdo of user.kdos; let index = index;">
-					<td (click)="showKdo(index)" class="pointer">
-						{{ kdo.title }}
-					</td>
+		<h1>
+			{{ 'user.listKdos' | translate:{ name: user.firstName } }}
+			<span class="pull-right">
+				<button class="btn btn-primary" (click)="addKdo()" *ngIf="isConnectedUser() | async">
+					<i class="fa fa-plus"></i>
+					Add
+				</button>
+			</span>
+		</h1>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>{{ 'user.kdos.title' | translate}}</th>
+				<th width="100px">
+						<span *ngIf="!isConnectedUser() | async">
+							{{ 'user.kdos.state' | translate }}
+						</span>
+				</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr *ngFor="let kdo of user.kdos; let index = index;">
+				<td (click)="showKdo(index)" class="pointer">
+					{{ kdo.title }}
+				</td>
+				<td *ngIf="isConnectedUser() | async; else statusTemplate">
+					<button class="btn btn-primary" (click)="edit(kdo, index)">
+						{{ 'user.kdos.edit' | translate}}
+					</button>
+				</td>
+				<ng-template #statusTemplate>
 					<td>
-						<button class="btn btn-primary" (click)="edit(kdo, index)">
-							{{ 'user.kdos.edit' | translate}}
-						</button>
+						{{ 'kdo.state.' + kdo.status | translate }}
 					</td>
-				</tr>
-				</tbody>
-			</table>
-		</div>
+				</ng-template>
+			</tr>
+			</tbody>
+		</table>
 	</div>
 	<ng-template #loadingTemplate>
 		<al-loading></al-loading>

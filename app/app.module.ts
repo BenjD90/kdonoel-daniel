@@ -6,8 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { SelectModule } from 'ng2-select-compat';
-import { ModalModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
 import { LoadingBarModule } from './components/angular-components/loading-bar/loading-bar.module';
@@ -111,7 +109,6 @@ class SourceMapDevErrorHandler extends ErrorHandler {
 		}),
 		CoreModule,
 		SharedModule.forRoot(),
-		SelectModule,
 		BsDropdownModule.forRoot(),
 		LoadingBarModule
 	],

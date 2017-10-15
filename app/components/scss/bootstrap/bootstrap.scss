@@ -108,12 +108,10 @@
 
 .btn-secondary {
 	@include button-variant($brand-secondary, $white, $brand-secondary);
-	border-radius: $btn-border-radius-large;
 }
 
 .btn-secondary-fill {
 	@include button-variant($white, $brand-secondary, $brand-secondary);
-	border-radius: $btn-border-radius-large;
 }
 
 .btn-lg .btn-large-radius-sides {
@@ -125,11 +123,11 @@
 }
 
 .panel-white {
-	@include panel-variant($white, $brand-primary-text, $white, $white);
+	@include panel-variant($white, $brand-primary-text, $panel-bg, $white);
+	border-width: 0;
 
 	.panel-heading {
 		color: $brand-primary-text;
-		text-transform: capitalize;
 		font-weight: bold;
 		font-size: 20px;
 	}

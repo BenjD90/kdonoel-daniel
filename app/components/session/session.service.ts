@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -9,13 +8,12 @@ import { ApiHttpClient } from '../http/api-http-client.service';
 import { Logger, LogService } from '../log/log.service';
 import { StoreService } from '../store/store.service';
 import { SwalService } from '../utils/swal.service';
-import _map = require('lodash/map');
 
 export interface Profile {
 	firstName: string;
 	lastName: string;
 	email: string;
-	userId: string;
+	_id: string;
 }
 
 export interface Session {

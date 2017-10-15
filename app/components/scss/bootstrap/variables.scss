@@ -1,6 +1,8 @@
 $body-bg: #000;
 $text-color: #fff;
 
+$link-color: #ff474a;
+
 $brand-primary-lite: #DEF0FA;
 $brand-primary: #7d0607;
 $brand-primary-text: #A20607;
@@ -8,9 +10,11 @@ $brand-secondary: #146422;
 
 $panel-bg: #333;
 $panel-default-text: #fff;
+$panel-border-radius: 15px;
 
 $btn-primary-color: #fff;
-$btn-primary-bg: $brand-primary;
+$btn-default-color: #333;
+$btn-primary-bg: $brand-primary; 
 $btn-primary-border: $btn-primary-bg;
 $btn-border-radius-large: 15px;
 

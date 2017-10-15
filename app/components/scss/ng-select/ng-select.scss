@@ -2,8 +2,11 @@ ng-select {
 
 	.ui-select-container {
 		.ui-select-match {
-			.btn {
+			> .btn {
+				min-width: 180px;
+			}
 
+			.btn {
 				&.btn-secondary {
 					@include button-variant($btn-default-color, $white, $input-border-color-base);
 				}

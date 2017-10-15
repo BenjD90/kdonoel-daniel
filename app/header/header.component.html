@@ -1,55 +1,57 @@
 <nav class="navbar navbar-default margin-bottom-sm-xs">
 	<div class="container-fluid">
-		<div class="navbar-header" *ngIf="profile || (!profile && !isOnHomePage())">
-			<a routerLink="/">
-				<img src="header/logo.png" alt="Puntovital" class="logo" height="80">
-			</a>
-		</div>
-		<div class="collapse navbar-collapse line-height-90-xs">
-			<ul class="nav navbar-nav navbar-right" *ngIf="!profile">
-				<li class="border-icon">
-					<a routerLink="/login" class="text-center">
-						<div class="btn btn-primary round-btn box-shadow">
-							<i class="fa fa-sign-in" aria-hidden="true"></i>
-						</div>
-						<div>
-							{{'header.links.login' | translate}}
-						</div>
-					</a>
-				</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right" *ngIf="profile">
-				<li class="border-icon">
-					<a routerLink="/" class="text-center">
-						<div class="btn btn-primary round-btn box-shadow">
-							<i class="fa fa-home" aria-hidden="true"></i>
-						</div>
-						<div>Accueil</div>
-					</a>
-				</li>
-				<li dropdown triggers="click" class="border-icon">
-					<a dropdownToggle class="text-center">
-						<div class="btn btn-primary round-btn box-shadow">
-							<i class="fa fa-user" aria-hidden="true"></i>
-						</div>
-						<div class="ellipsis">
-							<span>{{ profile.firstName }}</span>
-						</div>
-					</a>
-					<ul *dropdownMenu class="dropdown-menu">
-						<li>
-							<a class="pointer" (click)="logout()">
-								{{ 'header.links.logout' | translate }}
-							</a>
-						</li>
-						<li>
-							<a routerLink="/profile">
-								{{'header.profile' | translate:profile}}
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
+		<div class="row line-height-90-xs">
+			<div class="col-xs-4">
+				<a routerLink="/" *ngIf="profile || (!profile && !isOnHomePage())">
+					<img src="header/logo.png" alt="Puntovital" class="logo" height="80">
+				</a>
+			</div>
+			<div class="col-xs-8">
+				<ul class="pull-right line-height-14-xs" *ngIf="!profile">
+					<li class="border-icon">
+						<a routerLink="/login" class="text-center">
+							<div class="btn btn-primary round-btn box-shadow">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>
+							</div>
+							<div class="text-description-link ">
+								{{'header.links.login' | translate}}
+							</div>
+						</a>
+					</li>
+				</ul>
+				<div class="pull-right line-height-14-xs" *ngIf="profile">
+					<span class="border-icon">
+						<a routerLink="/" class="text-center">
+							<div class="btn btn-primary round-btn box-shadow">
+								<i class="fa fa-home" aria-hidden="true"></i>
+							</div>
+							<div class="text-description-link ">Accueil</div>
+						</a>
+					</span>
+					<span dropdown triggers="click" class="border-icon">
+						<a dropdownToggle class="text-center">
+							<div class="btn btn-primary round-btn box-shadow">
+								<i class="fa fa-user" aria-hidden="true"></i>
+							</div>
+							<div class="ellipsis">
+								<span>{{ profile.firstName }}</span>
+							</div>
+						</a>
+						<ul *dropdownMenu class="dropdown-menu">
+							<li>
+								<a class="pointer" (click)="logout()">
+									{{ 'header.links.logout' | translate }}
+								</a>
+							</li>
+							<li>
+								<a routerLink="/profile">
+									{{'header.profile' | translate:profile}}
+								</a>
+							</li>
+						</ul>
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </nav>

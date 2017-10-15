@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { User } from '../components/models/users/users.models';
 import { Profile, SessionService } from '../components/session/session.service';
 import { UsersService } from '../users/users.service';
-import { Observable } from 'rxjs/Observable';
-import { User } from '../components/models/users/users.models';
 
 @Component({
 	selector: 'n9-home',
-	templateUrl: 'home.component.html'
+	templateUrl: 'home.component.html',
+	styleUrls: ['home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
 

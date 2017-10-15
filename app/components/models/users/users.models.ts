@@ -15,4 +15,5 @@ export interface User {
 	accessToken?: string;
 
 	kdos?: Kdo[];
+	kdosCount?: number;
 }

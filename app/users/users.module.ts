@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SelectModule } from 'ng2-select-compat';
 import { ModalModule } from 'ngx-bootstrap';
+import { AlLinkifyPipe } from '../components/pipes/linkyfy.pipe';
 import { Nl2brPipe } from '../components/pipes/nl2br.pipe';
 import { SharedModule } from '../components/shared/shared.module';
 import { KdoComponent } from './kdo/kdo.component';
@@ -25,10 +27,12 @@ const routes: Routes = [
 		CommonModule,
 		SharedModule.forRoot(),
 		ModalModule.forRoot(),
+		SelectModule
 	],
 	providers: [],
 	declarations: [
 		Nl2brPipe,
+		AlLinkifyPipe,
 		UserComponent,
 		KdoComponent,
 		KdoFormComponent

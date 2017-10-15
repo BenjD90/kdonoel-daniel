@@ -5,15 +5,22 @@
 		margin-top: 23px;;
 	}
 
-	.navbar-default .navbar-nav {
-		> li > a {
-			padding-top: 10px;
-			height: 90px;
-			color: $brand-primary;
+	.pull-right {
+		> span {
+			list-style-type: none;
+
+			& > a {
+				padding-top: 10px;
+				height: 90px;
+				color: $brand-primary;
+			}
 		}
 
 		.border-icon {
 			width: 70px;
+			margin-top: 15px;
+			text-align: center;
+			display: inline-block;
 
 			.round-btn {
 				height: 50px;
@@ -42,10 +49,19 @@
 
 			}
 		}
+
+		.text-description-link {
+			color: #fff;
+		}
+
+		.dropdown-menu {
+			left: initial;
+			right: 0;
+		}
 	}
 
-	.navbar-default .navbar-nav > .border-icon > a:hover,
-	.navbar-default .navbar-nav > .border-icon > a:focus {
+	.pull-right > .border-icon > a:hover,
+	.pull-right > .border-icon > a:focus {
 		color: $brand-primary-text;
 	}
 

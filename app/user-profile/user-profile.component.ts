@@ -10,8 +10,6 @@ import { PwdValidatorDirective } from '../components/validators/pwd.validator.di
 import { PasswordService } from '../password/password.service';
 import { UsersService } from '../users/users.service';
 
-import _isEmpty = require('lodash/isEmpty');
-
 @Component({
 	selector: 'al-profile',
 	templateUrl: 'user-profile.component.html'
@@ -39,7 +37,7 @@ export class UserProfileComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.loading = true;
-		const userId = this.sessionService.getSession().profile.userId;
+		const userId = this.sessionService.getSession().profile._id;
 		this.userServices.getUser(userId).subscribe((user) => {
 			this.user = user;
 			this.loading = false;

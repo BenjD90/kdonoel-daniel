@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoadingBarEvent, LoadingBarEventType } from './loading-bar.models';
 import { LoadingBarService } from './loading-bar.service';
-
 import  _isNil = require('lodash/isNil');
 
 /**
@@ -15,7 +14,7 @@ import  _isNil = require('lodash/isNil');
 export class LoadingBarComponent implements OnInit {
 
 	@Input() progress: string = '0';
-	@Input() color: string = '#337ab7';
+	@Input() color: string = '#45b0ff';
 	@Input() height: string = '2px';
 	@Input() show: boolean = false;
 

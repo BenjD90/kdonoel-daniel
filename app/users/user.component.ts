@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap';
+import { Observable } from 'rxjs/Observable';
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
+import { SessionService } from '../components/session/session.service';
 import { KdoFormComponent } from './modals/kdo-form.component';
 import { UsersService } from './users.service';
 
@@ -18,7 +20,8 @@ export class UserComponent implements OnInit {
 		private router: Router,
 		private route: ActivatedRoute,
 		private usersService: UsersService,
-		private modalService: BsModalService) {
+		private modalService: BsModalService,
+		private sessionService: SessionService) {
 	}
 
 	ngOnInit(): void {
@@ -27,6 +30,12 @@ export class UserComponent implements OnInit {
 				this.loading = false;
 				this.user = user;
 			});
+		});
+	}
+
+	isConnectedUser(): Observable<boolean> {
+		return this.sessionService.session$.map((session) => {
+			return !this.loading && this.user._id === session.profile._id;
 		});
 	}
 

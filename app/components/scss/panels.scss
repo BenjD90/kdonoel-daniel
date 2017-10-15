@@ -14,64 +14,6 @@
 
 .panel {
 	@extend .box-shadow;
-
-	&.al-panel-default {
-		border: 1px solid $border-color-gray;
-		border-radius: 0;
-		> .panel-heading {
-			border-radius: 0;
-		}
-	}
-}
-
-.al-panel-default {
-	> .panel-heading {
-		color: white;
-		> .panel-title {
-			padding-top: 5px;
-			padding-bottom: 0;
-			@include panel-title-font-style;
-			text-transform: uppercase;
-			&.panel-link {
-				@include panel-link-font-style;
-				text-transform: none;
-			}
-		}
-		> .panel-link {
-			font-size: 14px;
-			cursor: pointer;
-			text-transform: none;
-			&:hover {
-				text-decoration: underline;
-			}
-			&:before {
-				@include fa-icon;
-				content: $fa-var-pencil;
-				margin-right: 5px;
-			}
-		}
-		background-color: $blue1;
-	}
-	> .panel-body {
-		background-color: #F2F2F2;
-		overflow: visible;
-		padding: 0;
-
-		&.collapsing {
-			overflow: hidden;
-		}
-
-		> .panel-body-content {
-			padding: 10px 20px;
-		}
-
-		.al-question-label {
-			font-size: 16px;
-			font-weight: bold;
-			color: $blue1;
-			font-family: $font-helvetica;
-		}
-	}
 }
 
 

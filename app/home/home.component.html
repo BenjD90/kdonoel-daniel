@@ -1,17 +1,26 @@
 <div *ngIf="!profile" class="container text-center">
 	<div class="panel panel-white">
-		<img width="462" height="208" src="header/logo.png" alt="Home"/>
-		<h1 class="margin-bottom-md-xs text-46-xs text-bold">
-			{{ 'home.title' | translate }}
-		</h1>
+		<div class="panel-heading">
+			<h1 class="text-28-xs text-bold">
+				{{ 'home.title' | translate }}
+			</h1>
+		</div>
+		<div class="panel-body">
+			<img src="header/logo.png" alt="Home"/>
+		</div>
 	</div>
 </div>
 
-<div *ngIf="profile" class="container text-left">
-{{ 'home.listUsers' | translate }}
-	<ul>
-		<li *ngFor="let user of usersObservable | async">
-			<a [routerLink]="['/users', user._id]">{{ user.firstName }}</a>
-		</li>
-	</ul>
+<div *ngIf="profile" class="container text-left text-18-xs">
+	<h2>
+		{{ 'home.listUsers' | translate }}
+	</h2>
+	<p *ngFor="let user of usersObservable | async">
+		<a [routerLink]="['/users', user._id]">
+			{{ user.firstName }}
+		</a>
+		<span *ngIf="user.kdosCount">
+			({{ user.kdosCount }} {{ 'home.kdosCount' | translate }})
+		</span>
+	</p>
 </div>

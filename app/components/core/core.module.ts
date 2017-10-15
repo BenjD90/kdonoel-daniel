@@ -5,7 +5,6 @@ import { LogService } from '../log/log.service';
 import { LoggedInGuard } from '../session/logged-in.guard';
 import { SessionService } from '../session/session.service';
 import { StoreModule } from '../store/store.module';
-import { DateUtilsService } from '../utils/date-utils.service';
 import { SwalService } from '../utils/swal.service';
 import { TranslateUtilsService } from '../utils/translate-utils.service';
 import { WindowRefService } from '../window/window-ref.service';
@@ -26,8 +25,7 @@ import { WindowRefService } from '../window/window-ref.service';
 		ApiHttpClient,
 		LoggedInGuard,
 		SwalService,
-		TranslateUtilsService,
-		DateUtilsService
+		TranslateUtilsService
 	]
 })
 export class CoreModule {
@@ -37,5 +35,4 @@ export class CoreModule {
 			throw new Error("CoreModule has already been loaded. Import Core modules in the AppModule only.");
 		}
 	}
-
 }
