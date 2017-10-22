@@ -153,11 +153,6 @@ module.exports = function (env, conf) {
 			}),
 			new TranslatePlugin({
 				"dynamic-i18n": {
-					conf: conf.dynamicI18n.dictionary
-				}
-			}),
-			new TranslatePlugin({
-				"dynamic-i18n": {
 					conf: conf.dynamicI18n.locale
 				}
 			})
