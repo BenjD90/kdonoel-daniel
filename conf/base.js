@@ -19,7 +19,8 @@ const credentials = {
 
 module.exports = {
 	env: {
-		api: '/api'
+		api: '/api',
+		baseUrl: '/'
 	},
 	dynamicI18n: {
 		locale: {
