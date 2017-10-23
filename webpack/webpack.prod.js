@@ -14,6 +14,8 @@ module.exports = function (env, conf) {
 	const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 	const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 	const CleanWebpackPlugin = require('clean-webpack-plugin');
+	const {BaseHrefWebpackPlugin} = require('base-href-webpack-plugin');
+
 
 	const TranslatePlugin = require('./translate-plugin');
 
@@ -113,6 +115,7 @@ module.exports = function (env, conf) {
 				template: path.resolve(rootDir, app, 'index.html'),
 				env: conf.env
 			}),
+			new BaseHrefWebpackPlugin({baseHref: conf.env.baseUrl ? conf.env.baseUrl : '/'}),
 			new ExtractTextPlugin({
 				filename: "styles.css",
 				disable: false,
