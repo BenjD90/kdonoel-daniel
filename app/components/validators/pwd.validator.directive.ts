@@ -16,7 +16,7 @@ export class PwdValidatorDirective implements Validator {
 		 */
 
 			// at least 1 digit && 1 letter
-		const regExp = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{8,}$/i;
+		const regExp = /^(?=.*[A-Za-z])(?=.*[0-9]).{8,}$/i;
 
 		return regExp.test(c.value) ? null : {pwdValid: true};
 	}

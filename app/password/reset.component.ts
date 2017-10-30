@@ -9,8 +9,6 @@ import { EqualsToValidatorDirective } from '../components/validators/equals-to.v
 import { PwdValidatorDirective } from '../components/validators/pwd.validator.directive';
 import { PasswordService } from './password.service';
 
-import _isEmpty = require('lodash/isEmpty');
-
 @Component({
 	selector: 'al-reset',
 	templateUrl: 'reset.component.html'
@@ -48,11 +46,8 @@ export class ResetComponent implements OnInit {
 		if (!this.resetForm.valid) return;
 
 		const req: ResetPasswordRequest = {
-			signup: this.signup,
-			user: {
 				token: this.token,
-				password: this.resetForm.value.pwd
-			}
+			newPassword: this.resetForm.value.pwd as string
 		};
 
 		this.session.resetPassword(req)

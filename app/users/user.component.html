@@ -5,7 +5,7 @@
 			<span class="pull-right">
 				<button class="btn btn-primary" (click)="addKdo()" *ngIf="isConnectedUser() | async">
 					<i class="fa fa-plus"></i>
-					Add
+					{{ 'user.kdos.add' | translate }}
 				</button>
 			</span>
 		</h1>

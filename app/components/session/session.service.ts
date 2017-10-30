@@ -27,13 +27,9 @@ export interface Credentials {
 }
 
 export interface ResetPasswordRequest {
-	signup: boolean;
-	user: {
-		userId?: string;
-		token: string;
-		password: string;
-	};
 	oldPassword?: string;
+	token?: string;
+	newPassword: string;
 }
 
 @Injectable()
@@ -108,7 +104,7 @@ export class SessionService {
 	}
 
 	resetPassword(req: ResetPasswordRequest): Observable<any> {
-		return this.http.post("/ecrm/users/front/reset/password", req)
+		return this.http.post('/users/reset/password', req)
 				.map((res) => res.json())
 				.catch((error) => Observable.throw(error.json().code || 'unknown-error'));
 	}
