@@ -2,7 +2,7 @@ const deepExtend = require("deep-extend");
 
 function loadConfigFile(env, path) {
 	env = env || 'development';
-	path = path || './config';
+	path = path || './conf';
 
 	//load base conf file
 	var baseConfPath = path + '/base.js';

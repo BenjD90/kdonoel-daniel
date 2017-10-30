@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
 const utils = require('./webpack/utils');
 
-const config = utils.loadConfigFile(env, __dirname + '\\conf');
+const config = utils.loadConfigFile(env, __dirname + '/conf');
 config.env = config.env || {};
 config.env.NODE_ENV = env;
 
