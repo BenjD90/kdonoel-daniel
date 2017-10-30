@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
 			}, (err) => {
 				this.loading = false;
 
-				const errorCode = err.code || 'unknown-error';
+				const errorCode = err.message || 'unknown-error';
 
 				if (errorCode === 'change-password-required') {
 					this.loading = true;
