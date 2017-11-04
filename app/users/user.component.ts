@@ -41,7 +41,7 @@ export class UserComponent implements OnInit {
 
 	addKdo(): void {
 		const modal = this.modalService.show(KdoFormComponent);
-		modal.content.onShow();
+		modal.content.onShow(this.user._id);
 		modal.content.onChange.subscribe((newUser: User) => {
 			this.user = newUser;
 		});
@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
 
 	edit(kdo: Kdo, index: number): void {
 		const modal = this.modalService.show(KdoFormComponent);
-		modal.content.onShow(kdo, index);
+		modal.content.onShow(this.user._id, kdo, index);
 		modal.content.onChange.subscribe((newUser: User) => {
 			this.user = newUser;
 		});

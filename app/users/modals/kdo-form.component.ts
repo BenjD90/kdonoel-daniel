@@ -18,6 +18,7 @@ export class KdoFormComponent {
 	modalType: 'edit' | 'new' = 'edit';
 	loading: boolean = true;
 	kdo: Kdo;
+	userId: string;
 
 	constructor(
 		private bsModalRef: BsModalRef,
@@ -29,7 +30,7 @@ export class KdoFormComponent {
 
 	onSubmit() {
 		if (this.modalType === 'new') {
-			this.usersService.addKdo(this.form.value).subscribe((newUsers) => {
+			this.usersService.addKdo(this.userId, this.form.value).subscribe((newUsers) => {
 				this.swalService.translateSuccess('kdo.add.confirm.success');
 				this.onChange.next(newUsers);
 				this.bsModalRef.hide();
@@ -37,7 +38,7 @@ export class KdoFormComponent {
 				this.swalService.translateError('commons.error', 'kdo.add.confirm.error.' + errorCode);
 			});
 		} else {
-			this.usersService.editKdo(this.kdoIndex, this.form.value).subscribe((newUsers) => {
+			this.usersService.editKdo(this.userId, this.kdoIndex, this.form.value).subscribe((newUsers) => {
 				this.swalService.translateSuccess('kdo.edit.confirm.success');
 				this.onChange.next(newUsers);
 				this.bsModalRef.hide();
@@ -47,8 +48,9 @@ export class KdoFormComponent {
 		}
 	}
 
-	onShow(kdo?: Kdo, kdoIndex?: number) {
+	onShow(userId: string, kdo?: Kdo, kdoIndex?: number) {
 		this.kdo = kdo;
+		this.userId = userId;
 		this.kdoIndex = kdoIndex;
 
 		if (!kdo) {

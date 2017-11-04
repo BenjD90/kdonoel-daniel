@@ -36,8 +36,8 @@ export class UsersService {
 			.catch((error) => Observable.throw(error.json().message || 'unknown-error'));
 	}
 
-	addKdo(kdo: Kdo): Observable<User> {
-		return this.http.post('/users/kdo', kdo)
+	addKdo(userId: string, kdo: Kdo): Observable<User> {
+		return this.http.post('/users/' + userId + '/kdo', kdo)
 			.map((res) => res.json())
 			.map((res: User) => {
 				this.usersCache[res._id] = res;
@@ -46,8 +46,8 @@ export class UsersService {
 			.catch((error) => Observable.throw(error.json().message || 'unknown-error'));
 	}
 
-	editKdo(index: number, kdo: Kdo): Observable<User> {
-		return this.http.put('/users/kdo/' + index, kdo)
+	editKdo(userId: string, index: number, kdo: Kdo): Observable<User> {
+		return this.http.put('/users/' + userId + '/kdo/' + index, kdo)
 			.map((res) => res.json())
 			.map((res: User) => {
 				this.usersCache[res._id] = res;
