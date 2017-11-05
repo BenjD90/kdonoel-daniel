@@ -2,7 +2,7 @@
   "name": "kdos-daniel-web",
   "private": true,
   "description": "Kdos daniel web app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "start": "webpack",
     "watch": "webpack --watch",
