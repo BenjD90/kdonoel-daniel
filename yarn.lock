@@ -172,6 +172,10 @@ angular2-template-loader@0.6.0:
   dependencies:
     loader-utils "^0.2.15"
 
+angulartics2@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-3.3.0.tgz#910a200346a4a3990b0a4f5032916cc483dff563"
+
 ansi-escapes@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 import { TranslateService } from '@ngx-translate/core';
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { LoadingBarService } from './components/angular-components/loading-bar/loading-bar.service';
 import { ConfigurationService } from './components/conf/configuration.service';
 import { ApiHttpClient } from './components/http/api-http-client.service';
@@ -20,7 +20,7 @@ export class AppComponent {
 		private conf: ConfigurationService,
 		private loadingBarService: LoadingBarService,
 		private http: ApiHttpClient,
-		private httpAngularService: Http) {
+		private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {
 		// i18n configuration
 		this.translateService.setDefaultLang(this.localeFilePrefix + 'fr-FR');
 		this.translateService.use(this.localeFilePrefix + 'fr-FR');

@@ -54,6 +54,7 @@
     "@types/webpack-env": "1.12.1",
     "angular2-router-loader": "0.3.4",
     "angular2-template-loader": "0.6.0",
+    "angulartics2": "^3.3.0",
     "awesome-typescript-loader": "3.0.4",
     "base-href-webpack-plugin": "^1.0.2",
     "bootstrap-sass": "3.3.7",

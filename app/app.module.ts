@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Angulartics2GoogleAnalytics, Angulartics2Module } from 'angulartics2';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppComponent } from './app.component';
 import { LoadingBarModule } from './components/angular-components/loading-bar/loading-bar.module';
@@ -99,6 +100,7 @@ class SourceMapDevErrorHandler extends ErrorHandler {
 		BrowserModule,
 		HttpModule,
 		RouterModule.forRoot(routes),
+		Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
 		BrowserModule,
 		TranslateModule.forRoot({
 			loader: {
