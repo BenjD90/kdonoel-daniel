@@ -69,7 +69,7 @@ export class KdoComponent implements OnInit {
 
 	edit(): void {
 		const modal = this.modalService.show(KdoFormComponent);
-		modal.content.onShow(this.kdo, this.index);
+		modal.content.onShow(this.userId, this.kdo, this.index);
 		modal.content.onChange.subscribe((newUser: User) => {
 			this.kdo = newUser.kdos[this.index];
 		});
