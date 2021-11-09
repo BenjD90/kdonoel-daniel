@@ -1,19 +1,26 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "types": [
-      "node",
-      "jasmine",
-      "core-js",
-      "lodash"
-    ]
-  }
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "lib": ["es2020", "dom"],
+    "module": "esnext",
+    "baseUrl": "./",
+    "types": ["node"]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "disableTypeScriptVersionCheck": true,
+    "preserveWhitespaces": true
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "exclude": ["src/test.ts", "src/**/*.spec.ts"]
 }

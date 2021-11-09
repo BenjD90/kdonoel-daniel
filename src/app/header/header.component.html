@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default margin-bottom-sm-xs">
+	<div class="w-100 d-flex justify-content-between">
+		<div>
+			<a routerLink="/" *ngIf="profile || (!profile && !isOnHomePage())">
+				<img src="assets/logo.png" class="logo" height="80" />
+			</a>
+		</div>
+		<div>
+			<ul class="pull-right line-height-14-xs" *ngIf="!profile">
+				<li class="border-icon">
+					<a routerLink="/login" class="text-center">
+						<div class="btn btn-primary round-btn box-shadow">
+							<i class="fa fa-sign-in" aria-hidden="true"></i>
+						</div>
+						<div class="text-description-link">
+							{{ 'header.links.login' | translate }}
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="pull-right line-height-14-xs" *ngIf="profile">
+				<span class="border-icon">
+					<a routerLink="/" class="text-center">
+						<div class="btn btn-primary round-btn box-shadow">
+							<i class="fa fa-home" aria-hidden="true"></i>
+						</div>
+						<div class="text-description-link">Accueil</div>
+					</a>
+				</span>
+				<span class="border-icon">
+					<a class="text-center" routerLink="/profile">
+						<div class="btn btn-primary round-btn box-shadow">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+						<div class="ellipsis">
+							<span class="text-description-link">{{ profile.firstName }}</span>
+						</div>
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</nav>

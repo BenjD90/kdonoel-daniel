@@ -1,0 +1,22 @@
+<div *ngIf="!profile" class="container text-center">
+	<div class="panel panel-white">
+		<div class="panel-heading">
+			<h1 class="text-28-xs text-bold">
+				{{ 'home.title' | translate }}
+			</h1>
+		</div>
+		<div class="panel-body">
+			<img src="assets/logo.png" alt="Home" />
+		</div>
+	</div>
+</div>
+
+<div *ngIf="profile" class="container text-left text-18-xs">
+	<h2>
+		{{ 'home.listUsers' | translate }}
+	</h2>
+	<p *ngFor="let user of usersObservable | async">
+		<a [routerLink]="['/users', user._id]"> {{ user.firstName }} {{ user.lastName }} </a>
+		<span *ngIf="user.kdosCount"> ({{ user.kdosCount }} {{ 'home.kdosCount' | translate }}) </span>
+	</p>
+</div>

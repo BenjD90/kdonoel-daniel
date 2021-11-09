@@ -1,0 +1,61 @@
+// Mixins
+// @import '~mixgen/assets/sass/variables';
+// @import '~mixgen/assets/sass/borders';
+// @import '~mixgen/assets/sass/colors';
+// @import '~mixgen/assets/sass/margins';
+// @import '~mixgen/assets/sass/paddings';
+// @import '~mixgen/assets/sass/text-align';
+// @import '~mixgen/assets/sass/texts';
+// @import '~mixgen/assets/sass/lineheights';
+// @import '~mixgen/assets/sass/verticals';
+
+// Font Awesome
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
+//SweetAlert2
+@import '~sweetalert2/src/sweetalert2.scss';
+
+[data-theme='dark'] {
+	$ng-select-highlight: #007eff !default;
+	$ng-select-primary-text: #fff !default;
+	$ng-select-disabled-text: #ddd !default;
+	$ng-select-border: #888 !default;
+	$ng-select-border-radius: 4px !default;
+	$ng-select-bg: #333 !default;
+	$ng-select-marked: darken($ng-select-highlight, 48) !default;
+	$ng-select-selected: darken($ng-select-highlight, 46) !default;
+	@import '~@ng-select/ng-select/scss/default.theme';
+}
+
+[data-theme='auto'] {
+	@import '~@ng-select/ng-select/scss/default.theme';
+}
+[data-theme='light'] {
+	@import '~@ng-select/ng-select/scss/default.theme';
+}
+
+.ng-select.auto-grow {
+	display: flex;
+
+	.ng-select-container {
+		min-width: 100px;
+		width: auto;
+	}
+
+	.ng-dropdown-panel {
+		width: auto;
+	}
+}
+
+//Variables
+// @import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-darkmode/scss/darktheme';
+
+// ng-select
+// @import '~swiper/dist/css/swiper.min.css';
+
+//Components
+@import 'forms';

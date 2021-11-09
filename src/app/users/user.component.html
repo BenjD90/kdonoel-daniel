@@ -1,0 +1,57 @@
+<div class="container">
+	<div *ngIf="!loading; else loadingTemplate">
+		<h1>
+			{{ 'user.listKdos' | translate: { name: user.firstName } }}
+			<span class="pull-right">
+				<button class="btn btn-primary" (click)="addKdo()">
+					<i class="fa fa-plus"></i>
+					{{ 'user.kdos.add' | translate }}
+				</button>
+			</span>
+		</h1>
+		<table class="table" *ngIf="user.kdos?.length">
+			<thead>
+				<tr>
+					<th>{{ 'user.kdos.title' | translate }}</th>
+					<th width="200px" *ngIf="!(isConnectedUser() | async)">
+						{{ 'user.kdos.state' | translate }}
+					</th>
+					<th class="col-edit"></th>
+					<th class="col-view"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let kdo of user.kdos; let index = index">
+					<td (click)="showKdo(index)" class="pointer">
+						{{ kdo.title }}
+					</td>
+					<td
+						*ngIf="!(isConnectedUser() | async)"
+						(click)="showKdo(index)"
+						class="pointer"
+						[class.font-weight-bold]="currentUserId() === kdo.status.userId"
+						[class.text-warning]="currentUserId() === kdo.status.userId"
+						[title]="kdo.status.lastUpdateDate ? 'Dernière modification de status le ' + (kdo.status.lastUpdateDate | date: 'short') : ''"
+					>
+						{{ 'kdo.state.' + kdo.status.code | translate }}
+						<span *ngIf="currentUserId() === kdo.status.userId">(Par toi)</span>
+					</td>
+					<td>
+						<button class="btn btn-primary btn-sm" (click)="edit(kdo, index)">
+							<i class="fa fa-edit"></i>
+						</button>
+					</td>
+					<td>
+						<button class="btn btn-primary btn-sm" (click)="showKdo(index)">
+							<i class="fa fa-eye"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="my-5" *ngIf="!user.kdos?.length">La liste de d'idées de {{ user.firstName }} {{ user.lastName }} est vide.</div>
+	</div>
+	<ng-template #loadingTemplate>
+		<al-loading></al-loading>
+	</ng-template>
+</div>
