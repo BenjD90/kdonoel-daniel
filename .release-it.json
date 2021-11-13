@@ -5,7 +5,7 @@
   "pkgFiles": ["package.json"],
   "preReleaseId": null,
   "increment": "patch",
-  "buildCommand": false,
+  "buildCommand": "npm run package",
   "changelogCommand": "npm run build:changelog",
   "safeBump": false,
   "requireCleanWorkingDir": false,
@@ -25,7 +25,12 @@
     "publish": false
   },
   "github": {
-    "release": false
+    "release": true,
+    "releaseName": "V ${version}",
+    "preRelease": false,
+    "draft": false,
+    "tokenRef": "GITHUB_TOKEN",
+    "assets": ["build/*.tar"]
   },
   "dist": {
     "repo": false
