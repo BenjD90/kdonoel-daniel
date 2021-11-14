@@ -1,6 +1,6 @@
 {
   "name": "kdos-daniel-web",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Kdos daniel web app",
   "scripts": {
     "ng": "ng",

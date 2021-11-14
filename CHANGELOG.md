@@ -1,3 +1,5 @@
+* release: Fix package script (08b219a)
+
 
 
 * conf: Fix base href for production (ffc6a19)
