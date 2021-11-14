@@ -1,3 +1,5 @@
+# [1.0.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.0.0-alpha.5...1.0.0) (2021-11-14)
+
 * conf: Fix base href for production (08f03c4)
 * format: Fix format (128f9a5)
 
