@@ -22,7 +22,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles/global/app.scss"],
             "scripts": [],
-            "baseHref": "/",
+            "baseHref": "/serv-daniel/kdos/",
             "allowedCommonJsDependencies": [
               "@neo9/n9-node-utils",
               "cronstrue",

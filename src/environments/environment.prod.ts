@@ -4,4 +4,7 @@ import { PublicConf } from './public-conf.models';
 
 export const environment = _.merge({}, base.public, {
 	name: 'prod',
+	api: {
+		baseHref: '/serv-daniel/kdos/',
+	},
 } as PublicConf);
