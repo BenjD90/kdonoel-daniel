@@ -1,3 +1,6 @@
+* conf: Fix base href for production (08f03c4)
+* format: Fix format (128f9a5)
+
 * release: Fix hook on build to package (ce18867)
 
 * release: Fix package script (08b219a)
