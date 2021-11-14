@@ -1,3 +1,5 @@
+* conf: Fix base href for production (ffc6a19)
+
 # [1.0.0-alpha.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/0.3.1...1.0.0-alpha.0) (2021-11-13)
 
 
