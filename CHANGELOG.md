@@ -1,3 +1,5 @@
+* release: Fix hook on build to package (ce18867)
+
 * release: Fix package script (08b219a)
 
 
