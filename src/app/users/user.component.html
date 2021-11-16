@@ -29,11 +29,11 @@
 						*ngIf="!(isConnectedUser() | async)"
 						(click)="showKdo(index)"
 						class="pointer"
-						[class.font-weight-bold]="currentUserId() === kdo.status.userId"
-						[class.text-warning]="currentUserId() === kdo.status.userId"
-						[title]="kdo.status.lastUpdateDate ? 'Dernière modification de status le ' + (kdo.status.lastUpdateDate | date: 'short') : ''"
+						[class.font-weight-bold]="currentUserId() === kdo.status?.userId"
+						[class.text-warning]="currentUserId() === kdo.status?.userId"
+						[title]="kdo.status.lastUpdateDate ? 'Dernière modification de status le ' + (kdo.status?.lastUpdateDate | date: 'short') : ''"
 					>
-						{{ 'kdo.state.' + kdo.status.code | translate }}
+						{{ 'kdo.state.' + kdo.status?.code | translate }}
 						<span *ngIf="currentUserId() === kdo.status.userId">(Par toi)</span>
 					</td>
 					<td>

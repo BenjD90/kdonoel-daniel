@@ -66,16 +66,14 @@
         "email": "Email",
         "password": "Mot de passe"
       },
-      "resetPassword": {
-        "error": "Si les informations saisies étaient correctes, vous allez recevoir un nouveau courriel sous peu avec un lien de réinitialisation de votre mot de passe.",
+      "initPassword": {
         "errors": {
           "account-locked": "Compte bloqué.",
-          "password-already-use": "Mot de passe déjà utilisé",
-          "validation-error": "Impossible de trouver votre token d'authentification "
+          "password-already-use": "Mot de passe déjà utilisé"
         },
-        "label": "Mot de passe oublié",
+        "label": "Initialisation de votre mot de passe",
         "success": {
-          "description": "Mot de passe modifé avec succés.",
+          "description": "Mot de passe initialisé avec succés.",
           "title": "Félicitations!"
         }
       },

@@ -7,11 +7,20 @@ export class PasswordResetRequest {
 	public newPassword: string;
 }
 
+export class InitPasswordRequest {
+	email: string;
+	pwd: string;
+}
+
 @Injectable()
 export class PasswordService {
 	constructor(private http: HttpClient) {}
 
 	resetPassword(req: PasswordResetRequest): Observable<any> {
 		return this.http.post('/users/reset/password', req);
+	}
+
+	initPassword(req: InitPasswordRequest): Observable<any> {
+		return this.http.post('/users/init/password', req);
 	}
 }

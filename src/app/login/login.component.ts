@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import * as _ from 'lodash';
 import { Subject } from 'rxjs';
 import { CreateSessionBody, SessionService } from '../components/session/session.service';
 import { noop } from '../components/utils/misc.util';
-import { SwalService } from '../components/utils/swal.service';
 import { PwdValidatorDirective } from '../components/validators/pwd.validator.directive';
 import { LoginService } from './login.service';
 
 @Component({
 	selector: 'n9-login',
 	templateUrl: 'login.component.html',
-	// careful: we do not have sourcemaps when using styleUrls (yet)
-	styleUrls: ['login.component.scss'],
 })
 export class LoginComponent implements OnInit {
 	errors: string[] = [];
@@ -56,28 +52,15 @@ export class LoginComponent implements OnInit {
 			},
 			(err) => {
 				this.loading = false;
+				const errorCode = err.error?.code || err.message || 'unknown-error';
 
-				const errorCode = err.message || 'unknown-error';
-
-				if (errorCode === 'change-password-required') {
+				if (errorCode === 'init-password-required') {
 					this.loading = true;
-					if (!_.get(err, 'error.context.token')) {
-						console.error('token missing in response !', err);
-					}
-					this.router
-						.navigate(['/password/reset'], {
-							queryParams: { token: err.error.context.token },
-						})
-						.then(() => (this.loading = false));
+					this.router.navigate(['/password/init'], {}).then(() => (this.loading = false));
 				}
 				this.errors.push(
-					[
-						'invalid-credentials',
-						'account-locked',
-						'doctors-not-found',
-						'several-doctors',
-					].includes(errorCode)
-						? `login.form.errors.${errorCode}`
+					['invalid-credentials', 'account-locked'].includes(errorCode)
+						? `commons.form.errors.${errorCode}`
 						: 'commons.errors.unknown-error',
 				);
 			},

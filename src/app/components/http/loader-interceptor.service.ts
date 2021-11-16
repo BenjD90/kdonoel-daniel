@@ -1,4 +1,5 @@
 import {
+	HttpErrorResponse,
 	HttpEvent,
 	HttpHandler,
 	HttpInterceptor,
@@ -6,8 +7,8 @@ import {
 	HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { LoadingBarService } from '../angular-components/loading-bar/loading-bar.service';
 
 @Injectable()
@@ -18,6 +19,10 @@ export class LoaderInterceptor implements HttpInterceptor {
 		this.loadingBarService.start();
 
 		return next.handle(req).pipe(
+			catchError((error: HttpErrorResponse) => {
+				this.loadingBarService.complete();
+				return throwError(error);
+			}),
 			map((event) => {
 				if (event instanceof HttpResponse) {
 					this.loadingBarService.complete();
