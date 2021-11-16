@@ -1,3 +1,14 @@
+# [1.1.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.0.0...1.1.0) (2021-11-16)
+
+
+### format
+
+* Fix format ([cdf7d91](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/cdf7d911078c0a1963c0c24bf69f2746cbc1d031))
+
+### init
+
+* Add users init password ([44cb77e](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/44cb77ec1967efeeda48e577587d37b600b47cda))
+
 # [1.0.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.0.0-alpha.5...1.0.0) (2021-11-14)
 
 * conf: Fix base href for production (08f03c4)
