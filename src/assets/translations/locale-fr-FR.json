@@ -118,6 +118,7 @@
           "submit": "Envoyer"
         },
         "placeholders": {
+          "email": "Email",
           "confirmed-pwd": "La confirmation de votre mot de passe",
           "pwd": "Votre mot de passe"
         }
