@@ -17,7 +17,6 @@ export const InterceptorForwardErrorHeader = 'X-Interceptor-Forward-Error';
 
 @Injectable()
 export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
-
 	private static getErrorKeyFromCode(code: number): string {
 		switch (code) {
 			case 400:

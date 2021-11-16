@@ -13,13 +13,7 @@ import { WindowRefService } from '../window/window-ref.service';
  */
 @NgModule({
 	imports: [ConfigurationModule.forRoot()],
-	providers: [
-		WindowRefService,
-		SessionService,
-		LoggedInGuard,
-		SwalService,
-		TranslateUtilsService,
-	],
+	providers: [WindowRefService, SessionService, LoggedInGuard, SwalService, TranslateUtilsService],
 })
 export class CoreModule {
 	constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

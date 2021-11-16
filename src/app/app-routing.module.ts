@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './components/session/logged-in.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginModule } from './login/login.module';
-import {PasswordModule} from './password/password.module';
+import { PasswordModule } from './password/password.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UsersModule } from './users/users.module';
 

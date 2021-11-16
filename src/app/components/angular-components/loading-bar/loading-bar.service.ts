@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable ,  Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { LoadingBarEvent, LoadingBarEventType } from './loading-bar.models';
 
 import * as _ from 'lodash';
@@ -84,7 +84,7 @@ export class LoadingBarService {
 			// Run the timer with milliseconds iterval
 			this._intervalCounterId = window.setInterval(() => {
 				// Increment the progress and update view component
-				this.progress+=1;
+				this.progress += 1;
 				// If the progress is 100% - call complete
 				if (this.progress === 100) {
 					this.stop();
