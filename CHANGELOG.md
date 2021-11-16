@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.0...1.1.1) (2021-11-16)
+
+
+### init
+
+* Fix translations ([3f840ff](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/3f840ffe858baa6d77b1f9dcf98bc651b9390327))
+
 # [1.1.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.0.0...1.1.0) (2021-11-16)
 
 
