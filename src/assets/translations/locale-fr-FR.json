@@ -77,6 +77,12 @@
           "title": "Félicitations!"
         }
       },
+      "resetPassword": {
+        "success": {
+          "description": "Mot de passe modifié avec succés.",
+          "title": "Félicitations !"
+        }
+      },
       "title": "Connexion"
     },
     "title": "Connectez-vous pour accéder aux listes de cadeaux !"
