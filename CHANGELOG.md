@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.1...1.1.2) (2021-11-17)
+
+
+### translation
+
+* Add missing translation ([ad8af0d](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/ad8af0de2615c1a2af44b07d4d2727b3625d0813))
+
 ## [1.1.1](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.0...1.1.1) (2021-11-16)
 
 
