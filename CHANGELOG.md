@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.2...1.1.3) (2021-11-18)
+
+
+### favicon
+
+* Fix favicon ([581e07e](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/581e07eaa4cf6572f357b41a2777a343e28169bc))
+
 ## [1.1.2](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.1...1.1.2) (2021-11-17)
 
 
