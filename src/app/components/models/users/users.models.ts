@@ -16,4 +16,5 @@ export interface User {
 
 	kdos?: Kdo[];
 	kdosCount?: number;
+	familyCodes?: string[];
 }
