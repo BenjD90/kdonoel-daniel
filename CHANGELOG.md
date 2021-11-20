@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.3...1.2.0) (2021-11-20)
+
+
+### families
+
+* Add families to users ([f194fd3](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/f194fd392ef829ad71353be93e17add43d2ee57b))
+
+### profile
+
+* Fix user profile firstName ([37d39b5](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/37d39b54f876d3ce81479b2e565bfdbb36852f2e))
+* Fix user profile firstName and lastName inversion ([3c7d22c](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/3c7d22c2ba1dddac32800007e114443f5bc7f0f1))
+
 ## [1.1.3](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.1.2...1.1.3) (2021-11-18)
 
 
