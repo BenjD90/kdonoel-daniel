@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { combineLatest, Observable, of, Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/internal/operators';
 import { User } from '../components/models/users/users.models';
 import { Profile, SessionService } from '../components/session/session.service';
 import { UsersService } from '../users/users.service';
@@ -14,10 +15,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 	subscription: Subscription;
 	usersObservable: Observable<User[]>;
 
-	constructor(private session: SessionService, private usersService: UsersService) {}
+	constructor(private sessionService: SessionService, private usersService: UsersService) {}
 
 	ngOnInit(): void {
-		this.subscription = this.session.session$.subscribe((s) => {
+		this.subscription = this.sessionService.session$.subscribe((s) => {
 			if (s) {
 				this.profile = s.profile;
 			} else {
@@ -25,7 +26,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 			}
 		});
 
-		this.usersObservable = this.usersService.getUsers();
+		this.usersObservable = combineLatest(
+			of<string>(this.sessionService.familyCode$.value),
+			this.sessionService.familyCode$,
+		).pipe(
+			switchMap(() => {
+				return this.usersService.getUsers(this.sessionService.familyCode$.getValue());
+			}),
+		);
 	}
 
 	ngOnDestroy(): void {

@@ -12,7 +12,7 @@ export class LoggedInGuard implements CanActivate {
 		route: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot,
 	): Observable<boolean> | Promise<boolean> | boolean {
-		return this.session.islogged$.pipe(
+		return this.session.isLogged$.pipe(
 			map((isLogged) => {
 				if (isLogged) {
 					return true;

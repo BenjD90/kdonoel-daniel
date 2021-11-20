@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Profile, SessionService } from '../components/session/session.service';
-import { SwalService } from '../components/utils/swal.service';
-import { UsersService } from '../users/users.service';
+import { SelectItem } from '../components/utils/select-item';
+import { TranslateUtilsService } from '../components/utils/translate-utils.service';
 
 @Component({
 	selector: 'n9-header',
@@ -13,24 +12,39 @@ import { UsersService } from '../users/users.service';
 export class HeaderComponent {
 	profile: Profile;
 	loading: boolean;
+	families: SelectItem[];
+	family: string;
 
 	constructor(
-		private session: SessionService,
+		private sessionService: SessionService,
 		private router: Router,
-		private translateService: TranslateService,
-		private usersServices: UsersService,
-		private swalService: SwalService,
+		private translateUtilsService: TranslateUtilsService,
 	) {
 		this.loading = true;
 
-		this.session.session$.subscribe((s) => {
+		this.sessionService.session$.subscribe((s) => {
 			if (s) {
 				this.profile = s.profile;
+				this.translateUtilsService
+					.translateSelectItems('families.', this.profile.familyCodes)
+					.subscribe((families) => {
+						this.families = families;
+					});
+				this.family = this.sessionService.familyCode$.value;
+				this.sessionService.familyCode$.subscribe((family) => {
+					if (this.family !== family) {
+						this.family = family;
+					}
+				});
 			} else {
 				delete this.profile;
 				this.loading = false;
 			}
 		});
+	}
+
+	onFamilySelect(family: SelectItem): void {
+		this.sessionService.setFamilyCode(family.id);
 	}
 
 	isOnHomePage(): boolean {

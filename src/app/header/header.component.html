@@ -2,7 +2,7 @@
 	<div class="w-100 d-flex justify-content-between">
 		<div>
 			<a routerLink="/" *ngIf="profile || (!profile && !isOnHomePage())">
-				<img src="assets/logo.png" class="logo" height="80" />
+				<img alt="Bourriquet sous la neige" src="assets/logo.png" class="logo" height="80" />
 			</a>
 		</div>
 		<div>
@@ -19,6 +19,9 @@
 				</li>
 			</ul>
 			<div class="pull-right line-height-14-xs" *ngIf="profile">
+				<span *ngIf="families?.length > 1">
+					<ng-select [clearable]="false" bindValue="id" [items]="families" (change)="onFamilySelect($event)" [ngModel]="family"></ng-select>
+				</span>
 				<span class="border-icon">
 					<a routerLink="/" class="text-center">
 						<div class="btn btn-primary round-btn box-shadow">

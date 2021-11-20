@@ -5,6 +5,7 @@
       "required": "Une réponse est requise!",
       "unknown-error": "Erreur inconnue.",
       "http": {
+        "400": "400 - Données invalides",
         "401": "401 - Action non authorisée",
         "404": "404 - Non trouvé",
         "504": "504 - Serveur inaccessible"
@@ -51,6 +52,10 @@
       "placeholder": "Rechercher un patient"
     },
     "welcome": "Bonjour {{firstName}}"
+  },
+  "families": {
+    "Daniel": "Famille Daniel",
+    "Chaboud": "Famille Chaboud"
   },
   "home": {
     "title": "Site d'échange d'idées de cadeaux 2018",

@@ -11,12 +11,13 @@
 	</div>
 </div>
 
-<div *ngIf="profile" class="container text-left text-18-xs">
+<div *ngIf="profile" class="container text-left mb-5">
 	<h2>
 		{{ 'home.listUsers' | translate }}
 	</h2>
-	<p *ngFor="let user of usersObservable | async">
+	<div *ngFor="let user of usersObservable | async">
 		<a [routerLink]="['/users', user._id]"> {{ user.firstName }} {{ user.lastName }} </a>
 		<span *ngIf="user.kdosCount"> ({{ user.kdosCount }} {{ 'home.kdosCount' | translate }}) </span>
-	</p>
+		<span class="small" *ngIf="user.lastSessionAt">Dernière connexion le {{ user.lastSessionAt | date: 'dd/MM' }}</span>
+	</div>
 </div>

@@ -8,6 +8,7 @@ export class CreateSessionBody {
 }
 
 export interface Profile {
+	familyCodes: string[];
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -23,10 +24,15 @@ export interface Session {
 export class SessionService {
 	public static readonly sessionKey: string = 'session';
 
-	public session$: BehaviorSubject<Session> = new BehaviorSubject(null as any);
-	public islogged$: Observable<boolean> = this.session$.pipe(map((p) => !!p));
+	public session$: BehaviorSubject<Session> = new BehaviorSubject(undefined);
+	public isLogged$: Observable<boolean> = this.session$.pipe(map((p) => !!p));
 	public login$: Observable<any> = new Subject();
 	public logout$: Observable<any> = new Subject();
+	private _familyCode$: BehaviorSubject<string> = new BehaviorSubject(null as any);
+
+	get familyCode$(): BehaviorSubject<string> {
+		return this._familyCode$;
+	}
 
 	public load(): void {
 		const session: Session = JSON.parse(localStorage.getItem(SessionService.sessionKey) as string);
@@ -45,6 +51,11 @@ export class SessionService {
 	}
 
 	public openSession(session: Session): void {
+		if (session.profile.familyCodes?.length) {
+			this.setFamilyCode(session.profile.familyCodes[0]);
+		} else {
+			this.setFamilyCode('Daniel'); // for smooth migration
+		}
 		localStorage.setItem(SessionService.sessionKey, JSON.stringify(session));
 		this.session$.next(session);
 		(this.login$ as Subject<any>).next();
@@ -52,8 +63,11 @@ export class SessionService {
 
 	public isTokenValid(session?: Session): boolean {
 		session = session || this.session$.getValue();
-		if (!session) return false;
-		return true;
+		return !!session;
+	}
+
+	public setFamilyCode(familyCode: string): void {
+		this._familyCode$.next(familyCode);
 	}
 
 	private closeSession(): void {

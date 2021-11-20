@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map } from 'rxjs/internal/operators';
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
+import { SessionService } from '../components/session/session.service';
 import { StatusRequest } from './users.models';
 
 @Injectable()
 export class UsersService {
 	private readonly usersCache: { [id: string]: User };
 
-	constructor(private http: HttpClient) {
+	constructor(private sessionService: SessionService, private http: HttpClient) {
 		this.usersCache = {};
 	}
 
@@ -27,8 +28,10 @@ export class UsersService {
 		);
 	}
 
-	getUsers(): Observable<User[]> {
-		return this.http.get<User[]>(`/users`);
+	getUsers(familyCode: string): Observable<User[]> {
+		return this.http.get<User[]>(`/users`, {
+			params: { 'family-code': familyCode },
+		});
 	}
 
 	addKdo(userId: string, kdo: Kdo): Observable<User> {
