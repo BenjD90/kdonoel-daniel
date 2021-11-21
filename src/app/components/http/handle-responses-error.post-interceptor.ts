@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LoadingBarService } from '../angular-components/loading-bar/loading-bar.service';
+import { SessionService } from '../session/session.service';
 import { SwalService } from '../utils/swal.service';
 
 export const InterceptorSkipHeader = 'X-Interceptor-Skip';
@@ -45,6 +46,7 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 		private swalService: SwalService,
 		private injector: Injector,
 		private loadingBarService: LoadingBarService,
+		private sessionService: SessionService,
 	) {
 		setTimeout(() => {
 			this.translateService = injector.get(TranslateService);
@@ -78,15 +80,24 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 				this.loadingBarService.complete();
 				if (error.name && error.message) {
 					console.error('http-error', error.status, error);
-					this.translateService
-						.get(HandleResponsesErrorPostInterceptor.getErrorKeyFromCode(error.status))
-						.subscribe((t) => {
-							SwalService.error(
-								this.translateService.instant('commons.error'),
-								`${t}<br />${(error as any).error?.code ?? ''}`,
-							);
-							console.error(t);
-						});
+
+					if (error.status === 401 && error.error?.code === 'invalid-signature') {
+						this.sessionService.logout();
+						SwalService.error(
+							`Session invalide (${error.error?.code})`,
+							`Vous avez été déconnecté de la version 2019 du site. Veuillez initialiser votre mot de passe.`,
+						);
+					} else {
+						this.translateService
+							.get(HandleResponsesErrorPostInterceptor.getErrorKeyFromCode(error.status))
+							.subscribe((t) => {
+								SwalService.error(
+									this.translateService.instant('commons.error'),
+									`${t}<br />${(error as any).error?.code ?? ''}`,
+								);
+								console.error(t);
+							});
+					}
 					return new Observable<HttpEvent<any>>((observer) => observer.complete());
 				}
 				return throwError(error) as Observable<HttpEvent<any>>;
