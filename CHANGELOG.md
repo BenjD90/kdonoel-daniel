@@ -1,3 +1,14 @@
+# [1.3.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.2.1...1.3.0) (2021-11-21)
+
+
+### kdos
+
+* Add surprises ([85d2700](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/85d2700177aa945c43b6bf8e933fd531e8f98784))
+
+### session
+
+* Fix invalid-signature error ([e254571](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/e254571c95df38135a4b05ecb911883a5e0d9b7f))
+
 ## [1.2.1](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.2.0...1.2.1) (2021-11-20)
 
 
