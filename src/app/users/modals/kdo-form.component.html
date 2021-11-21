@@ -5,7 +5,7 @@
 </div>
 <div class="modal-body" *ngIf="!loading">
 	<!--<pre>{{ form.value | json }}</pre>-->
-	<form [formGroup]="form" (submit)="onSubmit()">
+	<form class="p-2" [formGroup]="form" (submit)="onSubmit()">
 		<div class="form-group">
 			<label for="title">{{ 'kdo.form.title' | translate }}</label>
 			<input type="text" class="form-control" id="title" [placeholder]="'kdo.form.title' | translate" formControlName="title" />
@@ -14,7 +14,12 @@
 			<label for="description">{{ 'kdo.form.description' | translate }}</label>
 			<textarea class="form-control" id="description" rows="5" [placeholder]="'kdo.form.description' | translate" formControlName="description"></textarea>
 		</div>
-		<button type="submit" class="btn btn-default">
+		<div class="form-group" *ngIf="form.controls.isSurprise">
+			<label for="isSurprise">Est-ce une surprise ?</label>
+			<input type="checkbox" id="isSurprise" formControlName="isSurprise" />
+			<label for="isSurprise">{{ form.value.isSurprise ? 'oui' : 'non' }}</label>
+		</div>
+		<button type="submit" class="btn btn-primary pull-right">
 			{{ 'kdo.form.submit.' + modalType | translate }}
 		</button>
 	</form>

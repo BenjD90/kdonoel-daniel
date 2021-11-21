@@ -9,9 +9,13 @@ import { StatusRequest } from './users.models';
 
 @Injectable()
 export class UsersService {
-	private readonly usersCache: { [id: string]: User };
+	private usersCache: { [id: string]: User };
 
 	constructor(private sessionService: SessionService, private http: HttpClient) {
+		this.usersCache = {};
+	}
+
+	clearCache(): void {
 		this.usersCache = {};
 	}
 

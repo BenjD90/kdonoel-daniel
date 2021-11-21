@@ -3,6 +3,7 @@ export enum KdoState {
 	'RESERVED' = 'reserved',
 	'BOUGHT' = 'bought',
 }
+
 export class KdoStatus {
 	public code: KdoState;
 	public userId?: string;
@@ -13,4 +14,5 @@ export class Kdo {
 	public title: string;
 	public description?: string;
 	public status?: KdoStatus;
+	public isSurprise?: boolean;
 }

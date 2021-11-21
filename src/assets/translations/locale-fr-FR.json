@@ -196,6 +196,7 @@
       "label": "Etat",
       "edit": "Modifier",
       "undefined": "Libre (non reservé)",
+      "null": "Libre (non reservé)",
       "free": "Libre (non reservé)",
       "reserved": "Reservé",
       "bought": "Acheté"

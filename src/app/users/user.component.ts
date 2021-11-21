@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
 import { SessionService } from '../components/session/session.service';
@@ -16,7 +14,9 @@ import { UsersService } from './users.service';
 })
 export class UserComponent implements OnInit {
 	public user!: User;
+	public isConnectedUser: boolean;
 	loading: boolean = true;
+	currentUserId: string;
 
 	constructor(
 		private router: Router,
@@ -28,23 +28,16 @@ export class UserComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.params.subscribe((params) => {
-			this.usersService.getUser(params['userId']).subscribe((user) => {
-				this.loading = false;
-				this.user = user;
-			});
+			const session = this.sessionService.session$.getValue();
+			if (session) {
+				this.usersService.getUser(params['userId']).subscribe((user) => {
+					this.loading = false;
+					this.user = user;
+					this.isConnectedUser = session?.profile._id === params['userId'];
+					this.currentUserId = session?.profile._id;
+				});
+			}
 		});
-	}
-
-	isConnectedUser(): Observable<boolean> {
-		return this.sessionService.session$.pipe(
-			map((session) => {
-				return !this.loading && this.user._id === session.profile._id;
-			}),
-		);
-	}
-
-	currentUserId(): string {
-		return this.sessionService.session$.value.profile._id;
 	}
 
 	addKdo(): void {

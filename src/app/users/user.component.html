@@ -13,7 +13,8 @@
 			<thead>
 				<tr>
 					<th>{{ 'user.kdos.title' | translate }}</th>
-					<th width="200px" *ngIf="!(isConnectedUser() | async)">
+					<th width="100px" *ngIf="!isConnectedUser">Surprise ?</th>
+					<th width="200px" *ngIf="!isConnectedUser">
 						{{ 'user.kdos.state' | translate }}
 					</th>
 					<th class="col-edit"></th>
@@ -25,16 +26,19 @@
 					<td (click)="showKdo(index)" class="pointer">
 						{{ kdo.title }}
 					</td>
+					<td *ngIf="!isConnectedUser" [class.text-danger]="kdo.isSurprise">
+						{{ kdo.isSurprise ? 'Oui' : 'Non' }}
+					</td>
 					<td
-						*ngIf="!(isConnectedUser() | async)"
+						*ngIf="!isConnectedUser"
 						(click)="showKdo(index)"
 						class="pointer"
-						[class.font-weight-bold]="currentUserId() === kdo.status?.userId"
-						[class.text-warning]="currentUserId() === kdo.status?.userId"
+						[class.font-weight-bold]="currentUserId === kdo.status?.userId"
+						[class.text-warning]="currentUserId === kdo.status?.userId"
 						[title]="kdo.status?.lastUpdateDate ? 'Dernière modification de status le ' + (kdo.status?.lastUpdateDate | date: 'short') : ''"
 					>
 						{{ 'kdo.state.' + kdo.status?.code | translate }}
-						<span *ngIf="currentUserId() === kdo.status.userId">(Par toi)</span>
+						<span *ngIf="currentUserId === kdo.status?.userId">(Par toi)</span>
 					</td>
 					<td>
 						<button class="btn btn-primary btn-sm" (click)="edit(kdo, index)">

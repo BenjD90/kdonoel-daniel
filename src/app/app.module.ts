@@ -26,7 +26,7 @@ import { HomeComponent } from './home/home.component';
 import { UsersService } from './users/users.service';
 
 import fr from '@angular/common/locales/fr';
- import { NgSelectModule } from '@ng-select/ng-select';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 registerLocaleData(fr);
 

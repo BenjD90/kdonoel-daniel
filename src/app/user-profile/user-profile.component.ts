@@ -54,6 +54,7 @@ export class UserProfileComponent implements OnInit {
 	}
 
 	logout(): void {
+		this.userServices.clearCache();
 		this.sessionService.logout();
 		this.router.navigate(['/']).then(noop);
 	}
@@ -76,7 +77,7 @@ export class UserProfileComponent implements OnInit {
 		};
 
 		this.passwordService.resetPassword(reqReset).subscribe(
-			(res) => {
+			() => {
 				this.swal.translateSuccess(
 					'login.form.resetPassword.success.title',
 					'login.form.resetPassword.success.description',

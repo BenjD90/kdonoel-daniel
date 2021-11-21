@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NEVER, Observable } from 'rxjs';
+import { UsersService } from 'src/app/users/users.service';
 import { ConfigurationService } from '../conf/configuration.service';
 import { Session, SessionService } from '../session/session.service';
 import { noop } from '../utils/misc.util';
@@ -16,6 +17,7 @@ export class DefaultHeadersApiPreInterceptor implements HttpInterceptor {
 	constructor(
 		private conf: ConfigurationService,
 		private router: Router,
+		private usersService: UsersService,
 		private sessionService: SessionService,
 		private translateService: TranslateService,
 	) {
@@ -42,6 +44,7 @@ export class DefaultHeadersApiPreInterceptor implements HttpInterceptor {
 			if (this.session) {
 				if (!this.sessionService.isTokenValid()) {
 					console.error('jwt invalid, logout and redirect to login');
+					this.usersService.clearCache();
 					this.sessionService.logout();
 					this.router.navigate(['/login']).then(noop);
 
