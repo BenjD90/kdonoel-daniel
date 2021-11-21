@@ -39,12 +39,17 @@ export class UsersService {
 	}
 
 	addKdo(userId: string, kdo: Kdo): Observable<User> {
-		return this.http.post(`/users/${userId}/kdos`, kdo).pipe(
-			map((res: User) => {
-				this.usersCache[res._id] = res;
-				return res;
-			}),
-		);
+		return this.http
+			.post(`/users/${userId}/kdos`, {
+				isSurprise: false,
+				...kdo,
+			} as Kdo)
+			.pipe(
+				map((res: User) => {
+					this.usersCache[res._id] = res;
+					return res;
+				}),
+			);
 	}
 
 	editKdo(userId: string, index: number, kdo: Kdo): Observable<User> {
