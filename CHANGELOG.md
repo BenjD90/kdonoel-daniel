@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.3.1...1.3.2) (2021-12-01)
+
+
+### surprises
+
+* Add ng-toggle for surprises checkbox ([39ee03c](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/39ee03c0c65f576d5fec566fd9a4d0f6fd9d4df2))
+
 ## [1.3.1](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.3.0...1.3.1) (2021-11-21)
 
 
