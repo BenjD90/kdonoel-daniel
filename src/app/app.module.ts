@@ -2,11 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpBackend, HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import fr from '@angular/common/locales/fr';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgToggleModule } from '@nth-cloud/ng-toggle';
 import { Angulartics2Module } from 'angulartics2';
 import { NgBootstrapDarkmodeModule } from 'ng-bootstrap-darkmode';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -24,9 +27,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UsersService } from './users/users.service';
-
-import fr from '@angular/common/locales/fr';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 registerLocaleData(fr);
 
@@ -57,6 +57,7 @@ export function HttpLoaderFactory(httpBackend: HttpBackend): TranslateLoader {
 		LoadingBarModule,
 		NgBootstrapDarkmodeModule,
 		NgSelectModule,
+		NgToggleModule,
 	],
 	declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
 	entryComponents: [],

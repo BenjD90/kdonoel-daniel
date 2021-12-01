@@ -1511,6 +1511,13 @@
     node-gyp "^7.1.0"
     read-package-json-fast "^2.0.1"
 
+"@nth-cloud/ng-toggle@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@nth-cloud/ng-toggle/-/ng-toggle-8.0.2.tgz#ef837511cf23b011edc4aff288cf1667e9066e6c"
+  integrity sha512-1wwdhADSNMV1/eb9wld5ly3zE5I314cNt6IxNGD2ssIyoyPKFu5+0aGVz+cPiaLkD+yAje1Fk01+PhpIHpkEhw==
+  dependencies:
+    tslib "^2.2.0"
+
 "@octokit/auth-token@^2.4.4":
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-2.5.0.tgz#27c37ea26c205f28443402477ffd261311f21e36"

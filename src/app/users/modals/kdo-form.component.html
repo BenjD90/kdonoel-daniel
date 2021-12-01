@@ -15,9 +15,8 @@
 			<textarea class="form-control" id="description" rows="5" [placeholder]="'kdo.form.description' | translate" formControlName="description"></textarea>
 		</div>
 		<div class="form-group" *ngIf="form.controls.isSurprise">
-			<label for="isSurprise">Est-ce une surprise ?</label>
-			<input type="checkbox" id="isSurprise" formControlName="isSurprise" />
-			<label for="isSurprise">{{ form.value.isSurprise ? 'oui' : 'non' }}</label>
+			<label>Est-ce une surprise ?</label>
+			<ng-toggle [disableInitialAnimation]="true" onText="oui" offText="non" size="sm" formControlName="isSurprise"> </ng-toggle>
 		</div>
 		<button type="submit" class="btn btn-primary pull-right">
 			{{ 'kdo.form.submit.' + modalType | translate }}
