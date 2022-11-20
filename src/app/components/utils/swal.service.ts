@@ -99,7 +99,7 @@ export class SwalService {
 		descriptionParams?: object,
 		timer: number = 1000,
 	): void {
-		forkJoin<string, string>([
+		forkJoin([
 			this.translateService.get(title, titleParams),
 			this.translateService.get(description, descriptionParams),
 		]).subscribe(([titleTranslated, descriptionTranslated]) => {
@@ -114,7 +114,7 @@ export class SwalService {
 		descriptionParams?: object,
 		timer: number = 1000,
 	): void {
-		forkJoin<string, string>([
+		forkJoin([
 			this.translateService.get(title, titleParams),
 			this.translateService.get(description, descriptionParams),
 		]).subscribe(([titleTranslated, descriptionTranslated]) => {
@@ -123,7 +123,7 @@ export class SwalService {
 	}
 
 	public translateError(title: string, description: string = SwalService.empty): void {
-		forkJoin<string, string>([
+		forkJoin([
 			this.translateService.get(title),
 			this.translateService.get(description),
 		]).subscribe(([titleTranslated, descriptionTranslated]) => {
@@ -137,7 +137,7 @@ export class SwalService {
 		allowOutsideClick: boolean = true,
 		allowEscapeKey: boolean = true,
 	): void {
-		forkJoin<string, string>([
+		forkJoin([
 			this.translateService.get(title),
 			this.translateService.get(description),
 		]).subscribe(([titleTranslated, descriptionTranslated]) => {
@@ -152,7 +152,7 @@ export class SwalService {
 		descriptionParams?: object,
 		options: object = {},
 	): Observable<any> {
-		return forkJoin<string, string>([
+		return forkJoin([
 			this.translateService.get(title, titleParams),
 			this.translateService.get(description, descriptionParams),
 		]).pipe(
@@ -169,7 +169,7 @@ export class SwalService {
 		description: string = SwalService.empty,
 		options: object = {},
 	): Observable<any> {
-		return forkJoin<string, string>([
+		return forkJoin([
 			this.translateService.get(title),
 			this.translateService.get(description),
 		]).pipe(

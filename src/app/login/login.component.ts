@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 			(res) => {
 				if (res.profile) {
 					this.sessionService.openSession(res);
-					(this.sessionService.login$ as Subject<any>).next();
+					(this.sessionService.login$ as Subject<any>).next(undefined);
 					return this.router.navigate(['']).then(() => (this.loading = false));
 				}
 			},

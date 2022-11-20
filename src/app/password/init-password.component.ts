@@ -51,7 +51,7 @@ export class InitPasswordComponent {
 					'login.form.initPassword.success.description',
 				);
 				this.sessionService.openSession(res);
-				(this.sessionService.login$ as Subject<any>).next();
+				(this.sessionService.login$ as Subject<any>).next(undefined);
 				return this.router.navigate(['']);
 			},
 			(errorCode) => {

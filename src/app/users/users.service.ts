@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/internal/operators';
+import {map, Observable, of } from 'rxjs';
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
 import { SessionService } from '../components/session/session.service';

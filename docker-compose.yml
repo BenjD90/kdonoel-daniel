@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  kdos-web:
+    build:
+      context: ./
+      target: builder
+    image: kdos-web
+    command: yarn run dev
+    volumes:
+      - ./src:/home/app/src
+      - ./package.json:/home/app/package.json
+      - ./proxy.conf.json:/home/app/proxy.conf.json
+      - ./angular.json:/home/app/angular.json
+    ports:
+      - 8080:8080 # app port
+    networks:
+      - kdos
+    environment:
+      DEBUG: n9-node-conf # usefull to debug conf loading
+
+networks:
+  kdos:
+    external: true

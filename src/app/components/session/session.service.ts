@@ -41,13 +41,13 @@ export class SessionService {
 			console.error('JWT invalid');
 			return;
 		}
-		(this.logout$ as Subject<any>).next();
+		(this.logout$ as Subject<any>).next(undefined);
 		this.openSession(session);
 	}
 
 	public logout(): void {
 		this.closeSession();
-		(this.logout$ as Subject<any>).next();
+		(this.logout$ as Subject<any>).next(undefined);
 	}
 
 	public openSession(session: Session): void {
@@ -58,7 +58,7 @@ export class SessionService {
 		}
 		localStorage.setItem(SessionService.sessionKey, JSON.stringify(session));
 		this.session$.next(session);
-		(this.login$ as Subject<any>).next();
+		(this.login$ as Subject<any>).next(undefined);
 	}
 
 	public isTokenValid(session?: Session): boolean {

@@ -11,10 +11,10 @@
 
 // Font Awesome
 $fa-font-path: '~font-awesome/fonts';
-@import '~font-awesome/scss/font-awesome';
+@import 'node_modules/font-awesome/scss/font-awesome';
 
 //SweetAlert2
-@import '~sweetalert2/src/sweetalert2.scss';
+@import 'node_modules/sweetalert2/src/sweetalert2.scss';
 
 [data-theme='dark'] {
 	$ng-select-highlight: #007eff !default;
@@ -25,14 +25,14 @@ $fa-font-path: '~font-awesome/fonts';
 	$ng-select-bg: #333 !default;
 	$ng-select-marked: darken($ng-select-highlight, 48) !default;
 	$ng-select-selected: darken($ng-select-highlight, 46) !default;
-	@import '~@ng-select/ng-select/scss/default.theme';
+	@import 'node_modules/@ng-select/ng-select/scss/default.theme';
 }
 
 [data-theme='auto'] {
-	@import '~@ng-select/ng-select/scss/default.theme';
+	@import 'node_modules/@ng-select/ng-select/scss/default.theme';
 }
 [data-theme='light'] {
-	@import '~@ng-select/ng-select/scss/default.theme';
+	@import 'node_modules/@ng-select/ng-select/scss/default.theme';
 }
 
 .ng-select.auto-grow {
@@ -51,10 +51,10 @@ $fa-font-path: '~font-awesome/fonts';
 //Variables
 // @import 'variables';
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/bootstrap';
 
 $table-dark-bg: #000;
-@import '~bootstrap-darkmode/scss/darktheme';
+@import 'node_modules/bootstrap-darkmode/scss/darktheme';
 
 // ng-select
 // @import '~swiper/dist/css/swiper.min.css';

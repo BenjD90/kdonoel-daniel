@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:6686",
+    "target": "http://kdos-api:6686",
     "secure": false,
     "pathRewrite": {
       "^/api": ""

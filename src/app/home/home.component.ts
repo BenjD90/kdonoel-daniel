@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest, Observable, of, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/internal/operators';
+import { combineLatest, Observable, of, Subscription, switchMap } from 'rxjs';
 import { User } from '../components/models/users/users.models';
 import { Profile, SessionService } from '../components/session/session.service';
 import { UsersService } from '../users/users.service';

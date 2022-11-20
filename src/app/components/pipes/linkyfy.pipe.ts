@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as LinkifyStr from 'linkifyjs/string';
+import linkifyStr from "linkify-string";
 
 @Pipe({ name: 'alLinkify' })
 export class AlLinkifyPipe implements PipeTransform {
 	transform(str: string): string {
-		return str ? LinkifyStr(str, { target: '_blanck' }) : str;
+		return str ? linkifyStr(str, { target: '_blanck' }) : str;
 	}
 }

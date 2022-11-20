@@ -6,7 +6,7 @@
       "unknown-error": "Erreur inconnue.",
       "http": {
         "400": "400 - Données invalides",
-        "401": "401 - Action non authorisée",
+        "401": "401 - Action non autorisée",
         "404": "404 - Non trouvé",
         "504": "504 - Serveur inaccessible"
       }
@@ -35,7 +35,7 @@
   },
   "footer": {
     "contactus": "Un problème ? Une question ? Contactez BenJ ^_^",
-    "copyright": "Copyright 2021 - Benjamin DANIEL"
+    "copyright": "Copyright 2022 - Benjamin DANIEL"
   },
   "header": {
     "langselector": {
@@ -78,13 +78,13 @@
         },
         "label": "Initialisation de votre mot de passe",
         "success": {
-          "description": "Mot de passe initialisé avec succés.",
+          "description": "Mot de passe initialisé avec succès.",
           "title": "Félicitations!"
         }
       },
       "resetPassword": {
         "success": {
-          "description": "Mot de passe modifié avec succés.",
+          "description": "Mot de passe modifié avec succès.",
           "title": "Félicitations !"
         }
       },
@@ -119,9 +119,9 @@
         "character": "Avoir au moins 8 caractères",
         "digit": "Contenir des chiffres",
         "title": "Votre mot de passe doit :",
-        "uppercase": "Contenir des majuscules et miniscules"
+        "uppercase": "Contenir des majuscules et minuscules"
       },
-      "title": "Rénitialiser votre mot de passe"
+      "title": "Réinitialiser votre mot de passe"
     },
     "signup": {
       "form": {
@@ -149,8 +149,8 @@
     "listKdos": "Liste d'idées de {{name}} :",
     "kdos": {
       "title": "Titre",
-      "state": "Etat",
-      "edit": "Editer",
+      "state": "État",
+      "edit": "Éditer",
       "add": "Ajouter une idée de cadeau"
     }
   },
@@ -169,11 +169,11 @@
       "title": "Ajouter une idée de cadeau"
     },
     "edit": {
-      "title": "Editer l'idée de cadeau",
+      "title": "Éditer l'idée de cadeau",
       "confirm": {
         "success": "Idée de cadeau modifiée :)",
         "error": {
-          "user-not-valid": "Vous n'êtes pas authorisez à faire cela"
+          "user-not-valid": "Vous n'êtes pas autorisé à faire cela"
         }
       }
     },
@@ -192,13 +192,13 @@
     },
     "backToList": "Retourner à la liste des cadeaux",
     "state": {
-      "placeholder": " Libre (non reservé)",
-      "label": "Etat",
+      "placeholder": " Libre (non réservé)",
+      "label": "État",
       "edit": "Modifier",
-      "undefined": "Libre (non reservé)",
-      "null": "Libre (non reservé)",
-      "free": "Libre (non reservé)",
-      "reserved": "Reservé",
+      "undefined": "Libre (non réservé)",
+      "null": "Libre (non réservé)",
+      "free": "Libre (non réservé)",
+      "reserved": "Réservé",
       "bought": "Acheté"
     },
     "status": {
