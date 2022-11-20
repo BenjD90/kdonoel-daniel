@@ -85,7 +85,7 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 						this.sessionService.logout();
 						SwalService.error(
 							`Session invalide (${error.error?.code})`,
-							`Vous avez été déconnecté de la version 2019 du site. Veuillez initialiser votre mot de passe.`,
+							`Vous avez été déconnecté de la version 2021 du site. Veuillez initialiser votre mot de passe.`,
 						);
 					} else {
 						this.translateService
