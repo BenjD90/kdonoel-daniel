@@ -1,3 +1,12 @@
+
+
+# [2.0.0-rc.0](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.3.2...2.0.0-rc.0) (2022-11-20)
+
+
+### yarn
+
+* Upgrade all dependencies and switch to Docker ([b7eb3dd](https://github.com/kdonoel-daniel/kdonoel-daniel-web/commit/b7eb3dd5d942441109f2456918f619d8e0861769))
+
 ## [1.3.2](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/1.3.1...1.3.2) (2021-12-01)
 
 
@@ -156,4 +165,3 @@
 
 
 ## [0.0.1](https://github.com/kdonoel-daniel/kdonoel-daniel-web/compare/0.3.1...1.0.0-alpha.0) (2017-10-22)
-
