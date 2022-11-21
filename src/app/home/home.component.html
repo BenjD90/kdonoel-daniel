@@ -16,7 +16,7 @@
 		{{ 'home.listUsers' | translate }}
 	</h2>
 	<div *ngFor="let user of usersObservable | async">
-		<a [routerLink]="['/users', user._id]"> {{ user.firstName }} {{ user.lastName }} </a>
+		<a [routerLink]="['/users', user._id]">{{ user.firstName }}</a>
 		<span *ngIf="user.kdosCount"> ({{ user.kdosCount }} {{ 'home.kdosCount' | translate }}) </span>
 		<span class="small" *ngIf="user.lastSessionAt">Dernière connexion le {{ user.lastSessionAt | date: 'dd/MM' }}</span>
 	</div>
