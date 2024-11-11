@@ -1,5 +1,5 @@
 # bullseye required for gc-stats post build
-FROM node:18.12.1-bullseye AS builder
+FROM node:18.20.4-bullseye AS builder
 
 WORKDIR /home/app
 
@@ -10,7 +10,7 @@ RUN yarn install
 COPY ./ ./
 RUN yarn run build
 
-FROM nginx:1.21.5-alpine
+FROM nginx:1.27.2-alpine
 
 WORKDIR /home/www
 COPY --from=0 /home/app/dist/browser .
