@@ -12,7 +12,6 @@ export default {
 		},
 		api: {
 			baseHref: '/api',
-			serverHost: 'http://localhost:6686',
 			ignoredRoutes: ['^/assets/.*$', '^http://.*', '^https://.*'],
 		},
 	} as PublicConf,

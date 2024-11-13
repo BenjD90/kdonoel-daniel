@@ -6,7 +6,6 @@ export interface PublicConf {
 	};
 	api?: {
 		baseHref?: string;
-		serverHost: string;
 		ignoredRoutes?: string[];
 	};
 	name?: string;
