@@ -1,5 +1,11 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpBackend, HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+	HTTP_INTERCEPTORS,
+	HttpBackend,
+	HttpClient,
+	provideHttpClient,
+	withInterceptorsFromDi,
+} from '@angular/common/http';
 import fr from '@angular/common/locales/fr';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -35,12 +41,13 @@ export function HttpLoaderFactory(httpBackend: HttpBackend): TranslateLoader {
 }
 
 @NgModule({
+	declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
+	bootstrap: [AppComponent],
 	imports: [
 		AppRoutingModule,
 		CommonModule,
 		FormsModule,
 		BrowserModule,
-		HttpClientModule,
 		Angulartics2Module.forRoot(),
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -59,8 +66,6 @@ export function HttpLoaderFactory(httpBackend: HttpBackend): TranslateLoader {
 		NgSelectModule,
 		NgToggleModule,
 	],
-	declarations: [AppComponent, HomeComponent, HeaderComponent, FooterComponent],
-	entryComponents: [],
 	providers: [
 		{
 			provide: LOCALE_ID,
@@ -72,7 +77,7 @@ export function HttpLoaderFactory(httpBackend: HttpBackend): TranslateLoader {
 		{ provide: HTTP_INTERCEPTORS, useClass: HandleResponsesErrorPostInterceptor, multi: true },
 		UsersService,
 		SessionService,
+		provideHttpClient(withInterceptorsFromDi()),
 	],
-	bootstrap: [AppComponent],
 })
 export class AppModule {}

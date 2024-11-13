@@ -34,6 +34,5 @@ const routes: Routes = [
 	],
 	providers: [],
 	declarations: [Nl2brPipe, AlLinkifyPipe, UserComponent, KdoComponent, KdoFormComponent],
-	entryComponents: [KdoFormComponent],
 })
 export class UsersModule {}

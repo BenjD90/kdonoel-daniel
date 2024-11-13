@@ -5,15 +5,16 @@
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "lib": ["es2020", "dom"],
-    "module": "esnext",
+    "target": "ES2022",
+    "lib": ["es2020", "dom", "ES2021.String"],
+    "module": "es2020",
     "baseUrl": "./",
-    "types": ["node"]
+    "useDefineForClassFields": false,
+    "skipDefaultLibCheck": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
@@ -21,6 +22,5 @@
     "disableTypeScriptVersionCheck": true,
     "preserveWhitespaces": true
   },
-  "files": ["src/main.ts", "src/polyfills.ts"],
-  "exclude": ["src/test.ts", "src/**/*.spec.ts"]
+  "files": ["src/main.ts", "src/polyfills.ts"]
 }
