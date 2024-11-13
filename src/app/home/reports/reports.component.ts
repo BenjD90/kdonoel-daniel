@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 	templateUrl: './reports.component.html',
 })
 export class ReportsComponent implements OnInit {
-	constructor() {}
-
-	ngOnInit() {}
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	ngOnInit(): void {}
 }

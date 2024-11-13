@@ -14,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
 import { combineLatest, fromEvent, merge, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+
 import { FocusableComponent } from './focusable.component';
 
 export type EditActionType = 'create' | 'update';
@@ -77,7 +78,7 @@ export class ShowErrorsDirective implements AfterContentInit {
 		);
 
 		if (this.n9ShowErrors && this.n9ShowErrors.ngSubmit) {
-			this.n9ShowErrors.ngSubmit.subscribe((submit) => {
+			this.n9ShowErrors.ngSubmit.subscribe(() => {
 				this.onStatusChange(this.control.status as FormControlStatus, 'submit');
 			});
 		}
@@ -123,14 +124,12 @@ export class ShowErrorsDirective implements AfterContentInit {
 		}
 		this.errorsPlaceholder.innerHTML = '';
 
-		const mappedErrors = _.map(this.getControl().errors, (value, key) => {
-			return this.translateService.instant(
+		const mappedErrors = _.map(this.getControl().errors, (value, key) =>
+			this.translateService.instant(
 				`${this.errorsTranslationPrefix || 'commons.form.errors'}.${key}`,
 				_.isObject(value) ? value : {},
-			);
-		}).filter((t: string) => {
-			return !!t;
-		});
+			),
+		).filter((t: string) => !!t);
 		const allErrors = this.getControl() ? mappedErrors : [];
 
 		if (this.displayOnlyOne) this.errorsPlaceholder.innerHTML = allErrors[0];
@@ -187,6 +186,7 @@ export class ShowErrorsDirective implements AfterContentInit {
 
 			case 'blur':
 			case 'submit':
+			default:
 				this.hideValidationState();
 				if (status === 'VALID') {
 					this.displayValidState();
@@ -199,14 +199,12 @@ export class ShowErrorsDirective implements AfterContentInit {
 
 	private makeFocusChange(): Observable<InputFocusStatus> {
 		// console.log('makeFocusChange', this.focusItem, this.inputRef);
-		if (!!this.focusItem) {
+		if (this.focusItem) {
 			return this.focusItem.focusChange;
 		}
 		return merge(
-			fromEvent(this.getInputNativeElement(), 'blur').pipe(map((e) => 'blur' as InputFocusStatus)),
-			fromEvent(this.getInputNativeElement(), 'focus').pipe(
-				map((e) => 'focus' as InputFocusStatus),
-			),
+			fromEvent(this.getInputNativeElement(), 'blur').pipe(map(() => 'blur' as InputFocusStatus)),
+			fromEvent(this.getInputNativeElement(), 'focus').pipe(map(() => 'focus' as InputFocusStatus)),
 		);
 	}
 
@@ -220,7 +218,7 @@ export class ShowErrorsDirective implements AfterContentInit {
 	}
 
 	private getInputNativeElement(): any {
-		if (!!this.inputRef) return this.inputRef.nativeElement;
+		if (this.inputRef) return this.inputRef.nativeElement;
 		return this.input.nativeElement;
 	}
 }

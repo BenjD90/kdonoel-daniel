@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import linkifyStr from "linkify-string";
+import linkifyStr from 'linkify-string';
 
 @Pipe({ name: 'alLinkify' })
 export class AlLinkifyPipe implements PipeTransform {

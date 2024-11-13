@@ -9,6 +9,7 @@ import { Injectable, Injector } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { LoadingBarService } from '../angular-components/loading-bar/loading-bar.service';
 import { SessionService } from '../session/session.service';
 import { SwalService } from '../utils/swal.service';
@@ -64,14 +65,14 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 		if (req.headers.has(InterceptorForwardErrorHeader)) {
 			const headers = req.headers.delete(InterceptorForwardErrorHeader);
 			return next.handle(req.clone({ headers })).pipe(
-				catchError((error: HttpErrorResponse) => {
+				catchError((error: HttpErrorResponse) =>
 					// console.error('http-error', error.status, error);
 					// this.swalService.translateError('commons.error', this.getErrorKeyFromCode(error.status));
 					// this.translateService
 					// 	.get(this.getErrorKeyFromCode(error.status))
 					// 	.subscribe((t) => console.error(t));
-					return throwError(error);
-				}),
+					throwError(error),
+				),
 			);
 		}
 
@@ -79,6 +80,7 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 			catchError((error: HttpErrorResponse) => {
 				this.loadingBarService.complete();
 				if (error.name && error.message) {
+					// eslint-disable-next-line no-console
 					console.error('http-error', error.status, error);
 
 					if (error.status === 401 && error.error?.code === 'invalid-signature') {
@@ -95,6 +97,7 @@ export class HandleResponsesErrorPostInterceptor implements HttpInterceptor {
 									this.translateService.instant('commons.error'),
 									`${t}<br />${(error as any).error?.code ?? ''}`,
 								);
+								// eslint-disable-next-line no-console
 								console.error(t);
 							});
 					}

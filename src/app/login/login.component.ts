@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+
 import { CreateSessionBody, SessionService } from '../components/session/session.service';
 import { noop } from '../components/utils/misc.util';
 import { PwdValidatorDirective } from '../components/validators/pwd.validator.directive';
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
 		});
 	}
 
-	async submit($event: any): Promise<boolean> {
+	submit($event: any): boolean {
 		$event.stopPropagation();
 		if (!this.loginForm.valid) return;
 		if (!this.loginForm.valid) return;
@@ -47,7 +48,9 @@ export class LoginComponent implements OnInit {
 				if (res.profile) {
 					this.sessionService.openSession(res);
 					(this.sessionService.login$ as Subject<any>).next(undefined);
-					return this.router.navigate(['']).then(() => (this.loading = false));
+					this.router.navigate(['']).then(() => {
+						this.loading = false;
+					});
 				}
 			},
 			(err) => {
@@ -56,7 +59,9 @@ export class LoginComponent implements OnInit {
 
 				if (errorCode === 'init-password-required') {
 					this.loading = true;
-					this.router.navigate(['/password/init'], {}).then(() => (this.loading = false));
+					this.router.navigate(['/password/init'], {}).then(() => {
+						this.loading = false;
+					});
 				}
 				this.errors.push(
 					['invalid-credentials', 'account-locked'].includes(errorCode)

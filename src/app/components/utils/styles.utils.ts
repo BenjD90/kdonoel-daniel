@@ -1,4 +1,4 @@
-export const BLOCK_COMPONENT_STYLE: string = `
+export const BLOCK_COMPONENT_STYLE = `
 	:host {
 		display: block;
 	}

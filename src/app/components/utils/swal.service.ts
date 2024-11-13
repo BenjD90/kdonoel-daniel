@@ -56,7 +56,7 @@ export class SwalService {
 		});
 	}
 
-	public static confirm(
+	public static async confirm(
 		title: string,
 		description: string = '',
 		options: object = {},
@@ -72,7 +72,11 @@ export class SwalService {
 		});
 	}
 
-	public static input(title: string, description: string = '', options: object = {}): Promise<any> {
+	public static async input(
+		title: string,
+		description: string = '',
+		options: object = {},
+	): Promise<any> {
 		return sweetalert2.fire({
 			title,
 			text: description,
@@ -123,12 +127,11 @@ export class SwalService {
 	}
 
 	public translateError(title: string, description: string = SwalService.empty): void {
-		forkJoin([
-			this.translateService.get(title),
-			this.translateService.get(description),
-		]).subscribe(([titleTranslated, descriptionTranslated]) => {
-			SwalService.error(titleTranslated, descriptionTranslated);
-		});
+		forkJoin([this.translateService.get(title), this.translateService.get(description)]).subscribe(
+			([titleTranslated, descriptionTranslated]) => {
+				SwalService.error(titleTranslated, descriptionTranslated);
+			},
+		);
 	}
 
 	public translateInfo(
@@ -137,12 +140,11 @@ export class SwalService {
 		allowOutsideClick: boolean = true,
 		allowEscapeKey: boolean = true,
 	): void {
-		forkJoin([
-			this.translateService.get(title),
-			this.translateService.get(description),
-		]).subscribe(([titleTranslated, descriptionTranslated]) => {
-			SwalService.info(titleTranslated, descriptionTranslated, allowOutsideClick, allowEscapeKey);
-		});
+		forkJoin([this.translateService.get(title), this.translateService.get(description)]).subscribe(
+			([titleTranslated, descriptionTranslated]) => {
+				SwalService.info(titleTranslated, descriptionTranslated, allowOutsideClick, allowEscapeKey);
+			},
+		);
 	}
 
 	public translateConfirm(
@@ -156,11 +158,11 @@ export class SwalService {
 			this.translateService.get(title, titleParams),
 			this.translateService.get(description, descriptionParams),
 		]).pipe(
-			mergeMap(([titleTranslated, descriptionTranslated]) => {
-				return from(
+			mergeMap(([titleTranslated, descriptionTranslated]) =>
+				from(
 					SwalService.confirm(titleTranslated as string, descriptionTranslated as string, options),
-				);
-			}),
+				),
+			),
 		);
 	}
 
@@ -173,9 +175,9 @@ export class SwalService {
 			this.translateService.get(title),
 			this.translateService.get(description),
 		]).pipe(
-			mergeMap(([titleTranslated, descriptionTranslated]) => {
-				return from(SwalService.input(titleTranslated, descriptionTranslated, options));
-			}),
+			mergeMap(([titleTranslated, descriptionTranslated]) =>
+				from(SwalService.input(titleTranslated, descriptionTranslated, options)),
+			),
 		);
 	}
 }

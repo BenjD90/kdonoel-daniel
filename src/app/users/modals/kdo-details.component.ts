@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap';
 import { Subject } from 'rxjs/Subject';
+
 import { Kdo } from '../../components/models/users/kdos.models';
 import { User } from '../../components/models/users/users.models';
 import { SwalService } from '../../components/utils/swal.service';
@@ -25,7 +26,7 @@ export class KdoFormComponent {
 		this.onChange = new Subject<User>();
 	}
 
-	onShow(kdo: Kdo) {
+	onShow(kdo: Kdo): void {
 		this.kdo = kdo;
 	}
 }

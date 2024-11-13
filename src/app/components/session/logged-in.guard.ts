@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+
 import { SessionService } from './session.service';
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {
 	constructor(private session: SessionService, private router: Router) {}
 
-	canActivate(
-		route: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot,
-	): Observable<boolean> | Promise<boolean> | boolean {
+	canActivate(): Observable<boolean> | Promise<boolean> | boolean {
 		return this.session.isLogged$.pipe(
 			map((isLogged) => {
 				if (isLogged) {

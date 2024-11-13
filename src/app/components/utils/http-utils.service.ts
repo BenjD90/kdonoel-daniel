@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HttpUtilsService {
-	constructor() {}
-
 	buildParams(ids: string[]): URLSearchParams {
 		const params = new URLSearchParams();
 		ids.forEach((id) => {

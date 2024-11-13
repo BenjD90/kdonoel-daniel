@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { Kdo, KdoState } from '../../components/models/users/kdos.models';
 import { User } from '../../components/models/users/users.models';
 import { SessionService } from '../../components/session/session.service';
@@ -45,15 +46,15 @@ export class KdoComponent implements OnInit {
 		this.route.params.subscribe((params) => {
 			forkJoin([
 				this.translateUtilsService.translateSelectItems('kdo.state.', this.states),
-				this.usersService.getUser(params['userId']),
+				this.usersService.getUser(params.userId),
 			]).subscribe(([items, user]) => {
 				this.statesItems = items;
 				this.loading = false;
-				this.index = Number.parseInt(params['kdoIndex'], 10);
+				this.index = Number.parseInt(params.kdoIndex, 10);
 				this.userId = user._id;
 				this.kdo = user.kdos[this.index];
 				if (this.kdo.status) {
-					this.formStatus.controls['status'].setValue(this.kdo.status.code);
+					this.formStatus.controls.status.setValue(this.kdo.status.code);
 				}
 			});
 		});
@@ -61,9 +62,7 @@ export class KdoComponent implements OnInit {
 
 	isConnectedUser(): Observable<boolean> {
 		return this.sessionService.session$.pipe(
-			map((session) => {
-				return !this.loading && this.userId === session.profile._id;
-			}),
+			map((session) => !this.loading && this.userId === session.profile._id),
 		);
 	}
 

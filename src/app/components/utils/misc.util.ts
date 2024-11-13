@@ -1,2 +1,2 @@
-// tslint:disable-next-line:no-empty
-export const noop = () => {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export const noop = (): void => {};

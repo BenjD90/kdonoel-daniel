@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { LoadingBarEvent, LoadingBarEventType } from './loading-bar.models';
-
 import * as _ from 'lodash';
+import { Observable, Subject } from 'rxjs';
+
+import { LoadingBarEvent, LoadingBarEventType } from './loading-bar.models';
 
 /**
  * LoadingBar service helps manage Loading bar on the top of screen or parent component
@@ -21,9 +21,8 @@ export class LoadingBarService {
 	private _timeoutStartId: number = 0;
 	private eventSource: Subject<LoadingBarEvent>;
 
-	constructor() {
-		this.eventSource = new Subject<LoadingBarEvent>();
-		this.events = this.eventSource.asObservable();
+	get progress(): number {
+		return this._progress;
 	}
 
 	set progress(value: number) {
@@ -36,8 +35,8 @@ export class LoadingBarService {
 		}
 	}
 
-	get progress(): number {
-		return this._progress;
+	get height(): string {
+		return this._height;
 	}
 
 	set height(value: string) {
@@ -47,8 +46,9 @@ export class LoadingBarService {
 		}
 	}
 
-	get height(): string {
-		return this._height;
+	constructor() {
+		this.eventSource = new Subject<LoadingBarEvent>();
+		this.events = this.eventSource.asObservable();
 	}
 
 	set color(value: string) {
@@ -73,7 +73,7 @@ export class LoadingBarService {
 		return this._visible;
 	}
 
-	start(onCompleted: () => void = null): void {
+	start(): void {
 		// Stop current timer
 		this.stop();
 		// Make it visible for sure

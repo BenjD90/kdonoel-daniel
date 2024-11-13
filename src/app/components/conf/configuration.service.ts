@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+
 import { environment } from '../../../environments/environment';
 import { PublicConf } from '../../../environments/public-conf.models';
 
@@ -17,9 +18,7 @@ export class ConfigurationService {
 	public get<T>(key: keyof PublicConf | string): Observable<T> {
 		return this.conf$.pipe(
 			take(1),
-			map((conf) => {
-				return _.get(conf, key);
-			}),
+			map((conf) => _.get(conf, key)),
 		);
 	}
 	public getInstant<T>(key: keyof PublicConf | string): T {

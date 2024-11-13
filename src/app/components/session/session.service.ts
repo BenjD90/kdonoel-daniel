@@ -35,9 +35,10 @@ export class SessionService {
 	}
 
 	public load(): void {
-		const session: Session = JSON.parse(localStorage.getItem(SessionService.sessionKey) as string);
+		const session: Session = JSON.parse(localStorage.getItem(SessionService.sessionKey));
 		if (!session) return;
 		if (!this.isTokenValid(session)) {
+			// eslint-disable-next-line no-console
 			console.error('JWT invalid');
 			return;
 		}

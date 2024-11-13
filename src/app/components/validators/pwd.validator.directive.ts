@@ -6,6 +6,7 @@ import { FormControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angula
 	providers: [
 		{
 			provide: NG_VALIDATORS,
+			// eslint-disable-next-line no-use-before-define
 			useExisting: forwardRef(() => PwdValidatorDirective),
 			multi: true,
 		},

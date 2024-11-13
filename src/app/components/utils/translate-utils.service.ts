@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { SelectItems } from './select-item';
 
 @Injectable()
@@ -16,14 +17,12 @@ export class TranslateUtilsService {
 		if (!keys) return;
 
 		return this.translateService.get(prefix + keys[0] + sufix).pipe(
-			map(() => {
-				return keys.map((key) => {
-					return {
-						id: key,
-						label: this.translateService.instant(prefix + key + sufix),
-					};
-				});
-			}),
+			map(() =>
+				keys.map((key) => ({
+					id: key,
+					label: this.translateService.instant(prefix + key + sufix),
+				})),
+			),
 		);
 	}
 }

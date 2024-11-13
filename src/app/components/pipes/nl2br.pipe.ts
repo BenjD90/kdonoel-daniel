@@ -14,6 +14,6 @@ export class Nl2brPipe implements PipeTransform {
 			result = this.sanitizer.bypassSecurityTrustHtml(result);
 		}
 
-		return result ? result : value;
+		return result || value;
 	}
 }

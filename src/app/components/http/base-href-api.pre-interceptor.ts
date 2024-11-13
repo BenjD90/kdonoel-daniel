@@ -1,6 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { ConfigurationService } from '../conf/configuration.service';
 
 @Injectable()
@@ -9,9 +10,9 @@ export class BaseHrefApiPreInterceptor implements HttpInterceptor {
 
 	public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const isIgnoredRoute =
-			this.conf.getInstant<string[]>('api.ignoredRoutes').filter((ignoreRoute) => {
-				return new RegExp(ignoreRoute, 'g').test(req.url);
-			}).length > 0;
+			this.conf
+				.getInstant<string[]>('api.ignoredRoutes')
+				.filter((ignoreRoute) => new RegExp(ignoreRoute, 'g').test(req.url)).length > 0;
 
 		if (isIgnoredRoute) {
 			return next.handle(req);

@@ -6,6 +6,7 @@ import {
 	HostListener,
 	Input,
 } from '@angular/core';
+
 import { WindowRefService } from '../window/window-ref.service';
 
 /**
@@ -67,13 +68,17 @@ export class HeightEqualizerDirective implements AfterViewChecked, AfterViewInit
 			this.el.nativeElement.getElementsByClassName(this.className),
 		);
 		if (!children.length) return;
-		children.forEach((child) => (child.style.height = 'auto'));
+		children.forEach((child) => {
+			child.style.height = 'auto';
+		});
 		const tallest = children.reduce((prev, curr) => {
 			if (!prev) return curr;
 			if (this.getHeight(curr) > this.getHeight(prev)) return curr;
 			return prev;
 		}, null);
 		const maxHeight = this.getHeight(tallest);
-		children.forEach((child) => (child.style.height = `${maxHeight}px`));
+		children.forEach((child) => {
+			child.style.height = `${maxHeight}px`;
+		});
 	}
 }

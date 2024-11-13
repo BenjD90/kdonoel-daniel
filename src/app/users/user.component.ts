@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
+
 import { Kdo } from '../components/models/users/kdos.models';
 import { User } from '../components/models/users/users.models';
 import { SessionService } from '../components/session/session.service';
@@ -30,10 +31,10 @@ export class UserComponent implements OnInit {
 		this.route.params.subscribe((params) => {
 			const session = this.sessionService.session$.getValue();
 			if (session) {
-				this.usersService.getUser(params['userId']).subscribe((user) => {
+				this.usersService.getUser(params.userId).subscribe((user) => {
 					this.loading = false;
 					this.user = user;
-					this.isConnectedUser = session?.profile._id === params['userId'];
+					this.isConnectedUser = session?.profile._id === params.userId;
 					this.currentUserId = session?.profile._id;
 				});
 			}
